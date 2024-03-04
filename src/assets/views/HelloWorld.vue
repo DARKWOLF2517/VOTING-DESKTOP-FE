@@ -3,6 +3,7 @@
 
     <h1>hello world</h1>
     <button>button ni sya</button>
+    <div class="text-4xl font-bold text-red-600">Hello</div>
 </template>
 
 <script lang="ts">
@@ -17,19 +18,10 @@ export default defineComponent({
     },
     mounted() {
         console.log('asdfdsf')
-        this.fetchArea();
     },
 
     methods: {
-        async fetchArea() {
-            try {
-                const getArea = await axios.get(this.baseUrl + 'api/getElectPosition');
-                console.log(getArea.data)
 
-            } catch (error) {
-                console.log(error);
-            }
-        },
     }
 });
 
