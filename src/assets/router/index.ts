@@ -7,19 +7,24 @@ const routes: Array<RouteRecordRaw> = [
     //   name: 'Home',
     //   component: HomePage
     // },
-    {
-      path: "/helloworld",
-      name: 'Home',
-      meta: { title: 'Home' } ,
-      component: () => import("../views/HelloWorld.vue"),
-    },
+    // {
+    //   path: "/helloworld",
+    //   name: 'Home',
+    //   meta: { title: 'Home' } ,
+    //   component: () => import("../views/HelloWorld.vue"),
+    // },
     // {
     //   path: "/voting",
     //   name: 'Home',
     //   meta: { title: 'Home' } ,
     //   component: () => import("../views/voting.vue"),
     // },
-
+    {
+      path: "/login",
+      name: 'Login',
+      meta: { title: 'Home' } ,
+      component: () => import("../views/login.vue"),
+    },
   
   ];
   const router = createRouter({
