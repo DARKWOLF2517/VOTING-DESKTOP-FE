@@ -25,7 +25,7 @@
             <p class="text-start mt-2">Please Input Registration Code</p>
             <input v-model="inputText" type="text" class="w-full mt-6 h-10 px-4 rounded-lg border focus:outline-none focus:border-blue-500 bg-gray-200" placeholder="Enter text...">
             <div class="mt-2 flex justify-end">
-              <button type="button" class="text-white bg-primary hover:bg-accent w-full md:w-auto h-15 md:mr-0">Proceed</button>
+              <button type="button" class="text-white bg-primary hover:bg-accent w-full md:w-auto md:mr-0">Proceed</button>
             </div>
             <div class="">
               <small><b>Note:</b> All Cooperatives have their respective Registration Code, Use that to proceed here.</small>
