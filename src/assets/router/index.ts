@@ -13,17 +13,29 @@ const routes: Array<RouteRecordRaw> = [
     //   meta: { title: 'Home' } ,
     //   component: () => import("../views/HelloWorld.vue"),
     // },
-    // {
-    //   path: "/voting",
-    //   name: 'Home',
-    //   meta: { title: 'Home' } ,
-    //   component: () => import("../views/voting.vue"),
-    // },
+    {
+      path: "/voting",
+      name: 'Home',
+      meta: { title: 'Home' } ,
+      component: () => import("../views/voting.vue"),
+    },
     {
       path: "/login",
       name: 'Login',
       meta: { title: 'Home' } ,
       component: () => import("../views/login.vue"),
+    },
+    {
+      path: "/userselect",
+      name: 'User Selection',
+      meta: { title: 'Home' } ,
+      component: () => import("../views/userselect.vue"),
+    },
+    {
+      path: "/ballotcode",
+      name: 'Ballot Code',
+      meta: { title: 'Home' } ,
+      component: () => import("../views/ballotcode.vue"),
     },
   
   ];

@@ -9,7 +9,7 @@ export default {
       colors:{
         primary: "#1512ff",
         secondary: "#cdd7ff",
-        accent:"#eeba04",
+        accent:"#FFE601",
       },
       fontFamily: {
         // Define custom fonts

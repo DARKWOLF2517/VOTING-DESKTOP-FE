@@ -8,9 +8,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: light ;
   color: rgba(27, 27, 27, 0.87);
   background-color: #f6f8fd;
+  background-image: url('/src/assets/images/login-bg.png');
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -52,9 +53,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
   cursor: pointer;
   transition: border-color 0.25s;
+}
+input{
+  background-color: #f6f8fd;
 }
 button:hover {
   border-color: #eeba04;
