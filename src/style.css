@@ -10,17 +10,17 @@
 
   color-scheme: light dark;
   color: rgba(27, 27, 27, 0.87);
-  background-color: #f3f5ff;
+  background-color: #f6f8fd;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-@import 'tailwindcss/base';
+/* @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import 'flowbite/css/flowbite.css';
+@import 'flowbite/css/flowbite.css'; */
 
 a {
   font-weight: 500;
