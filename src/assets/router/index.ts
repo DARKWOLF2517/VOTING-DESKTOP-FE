@@ -37,7 +37,12 @@ const routes: Array<RouteRecordRaw> = [
       meta: { title: 'Home' } ,
       component: () => import("../views/ballotcode.vue"),
     },
-  
+    {
+      path: "/submit",
+      name: 'Vote submit',
+      meta: { title: 'Home' } ,
+      component: () => import("../views/submit.vue"),
+    },
   ];
   const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
