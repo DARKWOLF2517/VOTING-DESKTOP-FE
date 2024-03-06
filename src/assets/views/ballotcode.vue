@@ -123,7 +123,6 @@ export default {
 
 
 <style scoped>
-/* Add Tailwind CSS classes */
 
 .fade-in {
     animation: fadeInAnimation 1s ease-in-out forwards;
