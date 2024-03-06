@@ -17,7 +17,7 @@
                     <div
                         class="min-w-7 min-h-7 flex flex-col items-center md:w-full md:inline-flex md:flex-wrap md:flex-row text-xs align-middle">
                         <span
-                            class="size-7 flex justify-center items-center flex-shrink-0  font-medium text-gray-800 rounded-full bg-accent dark:text-white">
+                        class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-stone-200">
                             1
                         </span>
                         <div
@@ -57,7 +57,7 @@
                     <div
                         class="min-w-7 min-h-7 flex flex-col items-center md:w-full md:inline-flex md:flex-wrap md:flex-row text-xs align-middle">
                         <span
-                            class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-stone-200">
+                            class="size-7 flex justify-center items-center flex-shrink-0  font-medium text-gray-800 rounded-full bg-accent dark:text-white">
                             3
                         </span>
                         <div
@@ -77,26 +77,20 @@
         <div class="flex justify-center items-center">
             <div class="container px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
                 <div class=" image-bg image-animate">
-                    <img class=" w-full bg-cover" src="/src/assets/images/ballot-code.png" alt="alternative">
+                    <img class=" w-full bg-cover" src="/src/assets/images/thankyou.png" alt="alternative">
                 </div>
-                <div class="mb-16 lg:mt-32 xl:mt-20 xl:mr-12 px-10 card-animate">
-                    <div class="bg-white rounded-lg p-6 h-96 shadow-2xl">
-                        <h1 class="h1-large mb-2 mt-12 text-primary font-bold">Ballot Code</h1>
-                        <p class="p-large mb-12">Enter ballot code to cast your vote</p>
-                        <label for="registrationCode" class="flex text-start mb-0 font-bold text-primary">Ballot
-                            code</label>
-                        <input v-model="inputText" type="text"
-                            class="w-full h-10 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
-                            placeholder="Enter code...">
-                        <div class="mt-4 flex justify-end">
+                <div class="mb-16 lg:mt-32 xl:mt-10 xl:mr-12 px-10 card-animate">
+                    <div class="bg-white rounded-lg p-6 h-full shadow-2xl">
+                        <div class="flex justify-center">
+                            <img src="/src/assets/images/qr.png" alt="" class="h-60">
+                        </div>
+                       
+                        <p class="text-3xl mb-2 text-primary font-bold">Scan QR Code</p>
+                        <p class="p-large mb-6 text-primary">Please secure a copy of your QR code for printing. Thank you for Voting!</p>
+                        <div class="flex justify-center">
                             <button type="button"
-                                class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
-                                Start Voting
-                                <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1" />
-                                </svg>
+                                class="text-white bg-primary hover:bg-accent w-full md:w-auto md:mr-0 flex justify-center items-center">
+                                Download QR Code
                             </button>
                         </div>
                     </div>
