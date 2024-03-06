@@ -17,25 +17,25 @@ const routes: Array<RouteRecordRaw> = [
       path: "/voting",
       name: 'Home',
       meta: { title: 'Home' } ,
-      component: () => import("../views/voting.vue"),
+      component: () => import("../views/voting.vue"  as any),
     },
     {
-      path: "/login",
+      path: "/",
       name: 'Login',
       meta: { title: 'Home' } ,
-      component: () => import("../views/login.vue"),
+      component: () => import("../views/login.vue"  as any),
     },
     {
       path: "/userselect",
       name: 'User Selection',
       meta: { title: 'Home' } ,
-      component: () => import("../views/userselect.vue"),
+      component: () => import("../views/userselect.vue" as any) ,
     },
     {
       path: "/ballotcode",
       name: 'Ballot Code',
       meta: { title: 'Home' } ,
-      component: () => import("../views/ballotcode.vue"),
+      component: () => import("../views/ballotcode.vue"  as any),
     },
   
   ];
