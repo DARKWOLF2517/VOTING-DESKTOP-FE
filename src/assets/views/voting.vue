@@ -1,15 +1,5 @@
 <template>
-
   <div class="h-screen w-screen">
-    <!-- Navigation Bar -->
-    <nav class="bg-primary p-2">
-      <div class="container">
-        <div class="flex justify-start ">
-          <img src="https://www.climbs.coop/wp-content/uploads/2021/10/climbs-logo.jpg" alt="Sample Image"
-            class="w-10 h-10 ">
-        </div>
-      </div>
-    </nav>
     <div class="stepper flex justify-center mt-4">
       <!-- Stepper -->
       <ul class="relative flex flex-col md:flex-row gap-2">
@@ -127,12 +117,12 @@
                 </button>
               </div>
               <!-- Modal body -->
-              <div class="p-4 space-y-4">
+              <div class="p-4 space-y-4" >
                 <div class="p-2 bg-primary text-white">
                   <h3 class="text-xl font-semibold ">{{ voteCategory.description }}</h3>
                   <p class="text-center">Select {{ voteCategory.no_of_winner }} Candidates</p>
                 </div>
-                <div class="px-2 overflow-y-auto max-h-80">
+                <div class="px-2 overflow-y-auto " style="max-height: 50vh; overflow-y: auto;">
                   <ul>
                     <li v-for="candidate in temporaryCandidates" :key="candidate['ecandidateid']">
                       <div class="p-2 space-y-4">
@@ -193,6 +183,7 @@
             <div class="p-4">
               <!-- Modal header -->
               <div class="flex items-center justify-between border-b 0 ">
+                <h3 class="text-2xl py-2">Summary of Votes</h3>
                 <button @click="showSummaryModal = false"
                   class="text-primary mb-2 font-bold bg-white hover:bg-accent md:w-auto md:mr-0 text-sm ms-auto inline-flex justify-center items-center">
                   <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -206,7 +197,7 @@
               <!-- Modal body -->
               <div class="p-4 space-y-4">
 
-                <div class="px-2 overflow-y-auto max-h-80">
+                <div class="px-2 overflow-y-auto" style="max-height: 60vh; overflow-y: auto;">
                   <ul v-for="positions in finalVotedList" :key="positions['electpositionid']">
 
                     <div class="p-2 bg-primary text-white">
@@ -227,7 +218,9 @@
                       <hr>
                     </li>
                     <li v-else>
-                      <p>empty sya</p>
+                      <div class="p-6 ">
+                        <p class="text-m">No candidate/s selected</p>
+                      </div>
                     </li>
 
                   </ul>
