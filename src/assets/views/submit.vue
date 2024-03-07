@@ -1,4 +1,4 @@
- <template>
+<template>
     <div class="h-screen w-screen">
         <!-- Navigation Bar -->
         <nav class="bg-primary p-2">
@@ -17,7 +17,7 @@
                     <div
                         class="min-w-7 min-h-7 flex flex-col items-center md:w-full md:inline-flex md:flex-wrap md:flex-row text-xs align-middle">
                         <span
-                        class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-stone-200">
+                            class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-stone-200">
                             1
                         </span>
                         <div
@@ -37,7 +37,7 @@
                     <div
                         class="min-w-7 min-h-7 flex flex-col items-center md:w-full md:inline-flex md:flex-wrap md:flex-row text-xs align-middle">
                         <span
-                        class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-stone-200">
+                            class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-stone-200">
                             2
                         </span>
                         <div
@@ -82,13 +82,14 @@
                 <div class="mb-16 lg:mt-32 xl:mt-10 xl:mr-12 px-10 card-animate">
                     <div class="bg-white rounded-lg p-6 h-full shadow-2xl">
                         <div class="flex justify-center">
-                            <img src="/src/assets/images/qr.png" alt="" class="h-60">
+                            <img :src="url" alt="" class="h-60">
                         </div>
-                       
+
                         <p class="text-3xl mb-2 text-primary font-bold">Scan QR Code</p>
-                        <p class="p-large mb-6 text-primary">Please secure a copy of your QR code for printing. Thank you for Voting!</p>
+                        <p class="p-large mb-6 text-primary">Please secure a copy of your QR code for printing. Thank
+                            you for Voting!</p>
                         <div class="flex justify-center">
-                            <button type="button"
+                            <button @click="download()" type="button"
                                 class="text-white bg-primary hover:bg-accent w-full md:w-auto md:mr-0 flex justify-center items-center">
                                 Download QR Code
                             </button>
@@ -97,26 +98,58 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
 </template>
 
-<script>
+<script lang="ts">
 export default {
     data() {
-        return {};
+        return {
+            baseUrl: import.meta.env.VITE_APP_BASE_URL,
+            url: "",
+        };
     },
     mounted() {
         // Add animation class after component is mounted
         document.querySelector('.card-animate').classList.add('fade-in-left');
         document.querySelector('.image-animate').classList.add('fade-in');
-    }
+        this.generateQR()
+    },
+    methods: {
+        async download() {
+            const qr = document.createElement('a');
+            qr.href = this.url;
+            qr.download = sessionStorage.getItem("delegateid")+ '_'+ sessionStorage.getItem("ballotcode")+'_'+'qrcode.svg';
+            qr.click();
+        },
+        async generateQR() {
+            const config = {
+                headers: { Authorization: `Bearer ${localStorage.TOKEN}` },
+            };
+            let ballotCode = sessionStorage.getItem("ballotcode");
+            let url = this.baseUrl + `api/generateQR/` + ballotCode;
+
+            // this.showLoading();
+
+            await this.axios.get(url).then((response) => {
+
+                // loadingController.dismiss();
+
+                this.url = response.data;
+
+            }, error => {
+                // loadingController.dismiss();
+
+            });
+            console.log(this.url)
+        },
+    },
 };
 </script>
 
 
 <style scoped>
-
 .fade-in {
     animation: fadeInAnimation 1s ease-in-out forwards;
 }
