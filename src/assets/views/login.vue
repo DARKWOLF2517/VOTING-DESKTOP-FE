@@ -28,7 +28,7 @@
             <div class="mt-2 flex justify-end">
               <button type="button"
                 class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center"
-                @click="this.login()">
+                @click.prevent="login()">
                 Proceed
                 <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                   fill="none" viewBox="0 0 8 14">
@@ -51,7 +51,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
 export default {
   data() {
@@ -79,7 +79,7 @@ export default {
           if (response.status === 200) {
             // loading.present();
             setTimeout(() => {
-              this.coopcode = "";
+              // this.coopcode = "";
               sessionStorage.setItem("coopid", response.data.data.id);
               sessionStorage.setItem("coopname", response.data.data.coopname);
               sessionStorage.setItem("coopaddress", response.data.data.address);

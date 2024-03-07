@@ -28,7 +28,7 @@
               </select>
             </form>
             <div class="mt-4 flex justify-end">
-              <button type="button"
+              <button @click="checkName()" type="button"
                 class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
                 Submit
                 <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
 export default {
   data() {
@@ -80,7 +80,8 @@ export default {
     checkName() {
       if (this.delegateId) {
         console.log('naay sulod and id');
-        window.location.href = '/EnterBallot?delegateId=' + this.delegateId;
+        sessionStorage.setItem("delegateid", this.delegateId);
+        window.location.href = '/ballotcode';
       }
     },
   },

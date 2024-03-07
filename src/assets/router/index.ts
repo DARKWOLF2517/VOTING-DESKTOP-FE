@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
       path: "/submit",
       name: 'Vote submit',
       meta: { title: 'Home' } ,
-      component: () => import("../views/submit.vue"),
+      component: () => import("../views/submit.vue"  as any),
     },
   ];
   const router = createRouter({

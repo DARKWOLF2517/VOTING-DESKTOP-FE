@@ -1,4 +1,4 @@
- <template>
+<template>
     <div class="h-screen w-screen">
         <!-- Navigation Bar -->
         <nav class="bg-primary p-2">
@@ -37,7 +37,7 @@
                     <div
                         class="min-w-7 min-h-7 flex flex-col items-center md:w-full md:inline-flex md:flex-wrap md:flex-row text-xs align-middle">
                         <span
-                        class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-stone-200">
+                            class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-stone-200">
                             2
                         </span>
                         <div
@@ -85,11 +85,11 @@
                         <p class="p-large mb-12">Enter ballot code to cast your vote</p>
                         <label for="registrationCode" class="flex text-start mb-0 font-bold text-primary">Ballot
                             code</label>
-                        <input v-model="inputText" type="text"
+                        <input v-model="formData.ballotCode" type="text"
                             class="w-full h-10 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
                             placeholder="Enter code...">
                         <div class="mt-4 flex justify-end">
-                            <button type="button"
+                            <button @click.prevent="checkBallotCode" type="button"
                                 class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
                                 Start Voting
                                 <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
@@ -103,26 +103,61 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
 </template>
 
-<script>
+<script lang="ts">
+import axios from "axios";
 export default {
     data() {
-        return {};
+        return {
+            formData: { ballotCode: '' },
+            baseUrl: import.meta.env.VITE_APP_BASE_URL,
+        };
     },
     mounted() {
         // Add animation class after component is mounted
         document.querySelector('.card-animate').classList.add('fade-in-left');
         document.querySelector('.image-animate').classList.add('fade-in');
+    },
+    methods: {
+        async checkBallotCode() {
+            try {
+
+                //console.log(this.ballotCode)
+                const response = await axios.post(this.baseUrl + 'api/check', { ballotCode: this.formData.ballotCode });
+                console.log(response.data)
+                const isValidBallotCode = response.data[0] === 'ballotCode exist';
+                console.log('isValidBallotCode:', isValidBallotCode); // Log the value of isValidBallotCode
+                //console.log(response)
+                if (isValidBallotCode) {
+                    // Navigate to the next page
+                    // this.$router.push('/go');
+                    console.log('naa')
+                    sessionStorage.setItem("ballotcode", this.formData.ballotCode);
+                    window.location.href = '/voting';
+
+                    // this.$router.push({ path: '/voting', query: { ballotCode: this.ballotCode } });
+                } else {
+                    console.log('not exist')
+                    // Display an error message or take appropriate action
+                    //alert('Invalid ballot code or ballot has already been used');
+                    // this.toastMessage = 'Invalid ballot code or ballot has already been used';
+                    // this.showToast = true;
+                    // this.showToastMessage();
+                }
+
+            } catch (error) {
+                console.log(error);
+            }
+        },
     }
 };
 </script>
 
 
 <style scoped>
-
 .fade-in {
     animation: fadeInAnimation 1s ease-in-out forwards;
 }
