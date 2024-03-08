@@ -111,16 +111,15 @@ export default {
         async download() {
             const qr = document.createElement('a');
             qr.href = this.url;
-            qr.download = sessionStorage.getItem("delegateid")+ '_'+ sessionStorage.getItem("ballotcode")+'_'+'qrcode.svg';
+            qr.download = this.$route.query.delegateId+ '_'+ this.$route.query.ballotCode+'_'+'qrcode.svg';
             qr.click();
         },
         async generateQR() {
             const config = {
                 headers: { Authorization: `Bearer ${localStorage.TOKEN}` },
             };
-            let ballotCode = sessionStorage.getItem("ballotcode");
+            let ballotCode = this.$route.query.ballotCode;
             let url = this.baseUrl + `api/generateQR/` + ballotCode;
-
             // this.showLoading();
 
             await this.axios.get(url).then((response) => {
@@ -135,6 +134,7 @@ export default {
             });
             console.log(this.url)
         },
+
     },
 };
 </script>

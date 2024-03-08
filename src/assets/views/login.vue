@@ -44,6 +44,8 @@
 </template>
 
 <script lang="ts">
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 import axios from 'axios';
 export default {
   data() {
@@ -94,10 +96,15 @@ export default {
           //   await alert2.present();
           // }
           // showAlert(); // Call the async function
-
+          this.showError('Cooperative Code is invalid!')
           console.error("Error:", error);
         });
 
+    },
+    showError(message: any) {
+      toast.error(message), {
+        autoClose: 100,
+      }
     },
 
   }

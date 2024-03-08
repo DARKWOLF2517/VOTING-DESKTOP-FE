@@ -99,6 +99,8 @@
 </template>
 
 <script lang="ts">
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 import axios from "axios";
 export default {
     data() {
@@ -131,7 +133,7 @@ export default {
 
                     // this.$router.push({ path: '/voting', query: { ballotCode: this.ballotCode } });
                 } else {
-                    console.log('not exist')
+                    this.showError(response.data.error)
                     // Display an error message or take appropriate action
                     //alert('Invalid ballot code or ballot has already been used');
                     // this.toastMessage = 'Invalid ballot code or ballot has already been used';
@@ -141,6 +143,11 @@ export default {
 
             } catch (error) {
                 console.log(error);
+            }
+        },
+        showError(message:any) {
+            toast.error(message), {
+                autoClose: 100,
             }
         },
     }

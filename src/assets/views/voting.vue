@@ -117,7 +117,7 @@
                 </button>
               </div>
               <!-- Modal body -->
-              <div class="p-4 space-y-4" >
+              <div class="p-4 space-y-4">
                 <div class="p-2 bg-primary text-white">
                   <h3 class="text-xl font-semibold ">{{ voteCategory.description }}</h3>
                   <p class="text-center">Select {{ voteCategory.no_of_winner }} Candidates</p>
@@ -234,7 +234,7 @@
                   class="py-2.5 mr-2 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-accent hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
                   Close
                 </button>
-                <button @click="showConfirmationModal = true" type="button"
+                <button @click="  checkSubmission()" type="button"
                   class="text-white bg-blue-700 hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                   Submit
                 </button>
@@ -278,6 +278,8 @@
 
 <script lang="ts">
 import axios from 'axios';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 export default {
   data() {
     return {
@@ -309,6 +311,10 @@ export default {
   mounted() {
 
     this.fetchArea();
+    if(!sessionStorage.getItem("ballotcode")){
+      window.location.href = '/';
+    }
+    console.log(sessionStorage.getItem("ballotcode"))
 
   },
   methods: {
@@ -378,7 +384,7 @@ export default {
       // get all candidates under positions
       this.temporaryCandidates = [...this.candidates];
       const filteredCandidates = this.temporaryCandidates.filter(candidate => {
-        return candidate.area_no == areaNo  && candidate.electpositionid == electpositionid;
+        return candidate.area_no == areaNo && candidate.electpositionid == electpositionid;
       });
 
       this.temporaryCandidates = filteredCandidates
@@ -388,12 +394,12 @@ export default {
       //   const candidates = await axios.post(this.baseUrl + 'api/getCandidates/', this.voteCategory);
       //   this.candidates = candidates.data;
       //   //to get the total voted count
-   
+
 
       // } catch (error) {
       //   console.log(error);
       // }
-     this.getTotalVotedCount();
+      this.getTotalVotedCount();
 
       console.log("temporary votes id " + this.TemporaryvotedCandidates);
       console.log("final votes id " + this.FinalvotedCandidates)
@@ -455,22 +461,27 @@ export default {
       console.log("final votes id " + this.FinalvotedCandidates)
       this.closeCandidateModal();
     },
-
-    async submitVote() {
+    checkSubmission() {
       if (this.FinalvotedCandidates.length > 0) {
-        try {
-          const submitVote = await axios.post(this.baseUrl + 'api/submitVote/' + this.ballotCode + '/' + this.delegateId, this.FinalvotedCandidates);
-          console.log(submitVote.data);
-
-          window.location.href = '/submit';
-
-        } catch (error) {
-          console.log(error);
-        }
+        this.showConfirmationModal = true;
       }
       else {
-        alert('Please fill out the form before submitting');
+        this.showError('Please Select Candidates before Submitting')
       }
+    },
+
+    async submitVote() {
+      try {
+        const submitVote = await axios.post(this.baseUrl + 'api/submitVote/' + this.ballotCode + '/' + this.delegateId, this.FinalvotedCandidates);
+        console.log(submitVote.data);
+
+        window.location.href = '/submit?ballotCode='+ this.ballotCode + '&delegateId=' + this.delegateId;
+        sessionStorage.clear()
+
+      } catch (error) {
+        console.log(error);
+      }
+
 
     },
 
@@ -484,7 +495,12 @@ export default {
         return this.TemporaryvotedCandidates.includes(candidate['ecandidateid']);
       });
       this.totalVoted = selectedCandidates.length;
-    }
+    },
+    showError(message: any) {
+      toast.error(message), {
+        autoClose: 100,
+      }
+    },
   },
 
 }
