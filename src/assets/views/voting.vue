@@ -393,6 +393,7 @@ export default {
       } catch (error) {
         console.log(error);
       }
+      this.getCandidatesResult();
 
     },
     async fetchArea() {
@@ -404,6 +405,7 @@ export default {
         console.log(error);
       }
       this.fetchElectPosition();
+      
     },
 
     getCandidatesResult() {
