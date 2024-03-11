@@ -65,8 +65,8 @@
       </ul>
       <!-- End Stepper -->
     </div>
-    <h1 class="h1-large mb-2  text-primary font-bold">Ballot Code</h1>
-    <p class="p-large ">Enter ballot code to cast your vote</p>
+    <h1 class="h1-large  text-primary font-bold">Cast Vote</h1>
+    <p class="p-large ">Select Candidate of choice</p>
     <div class="flex justify-end mr-4">
       <button type="button"
         class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center"
@@ -79,63 +79,67 @@
         </svg>
       </button>
     </div>
-    <div class="row flex justify-center">
-      <div class="col">
-      <!-- Category Buttons -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-6">
-      <button class="bg-white hover:bg-accent hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none"
-        @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])"
-        v-for="positions in electPosition" :key="positions['electpositionid']">
-        <div class="flex items-center justify-center h-40 p-4">
-          <svg class="w-[40px] h-[40px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor" viewBox="0 0 24 24">
-            <path fill-rule="evenodd"
-              d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4c0 1.1.9 2 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.8-3.1a5.5 5.5 0 0 0-2.8-6.3c.6-.4 1.3-.6 2-.6a3.5 3.5 0 0 1 .8 6.9Zm2.2 7.1h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1l-.5.8c1.9 1 3.1 3 3.1 5.2ZM4 7.5a3.5 3.5 0 0 1 5.5-2.9A5.5 5.5 0 0 0 6.7 11 3.5 3.5 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4c0 1.1.9 2 2 2h.5a6 6 0 0 1 3-5.2l-.4-.8Z"
-              clip-rule="evenodd" />
-          </svg>  
-          <h2 class="text-xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
-        </div>
-      </button>
-
+    <div class="row flex justify-between gap-4">
+      <div class="col flex-1">
+    <!-- Category Buttons -->
+    <div class="px-4 overflow-y-auto" style="max-height: 70vh;">
+      <ul class="list-none">
+        <li v-for="positions in electPosition" :key="positions['electpositionid']">
+          <button
+            class="bg-white hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none w-full mb-4"
+            @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])" 
+          >
+            <div class="flex items-center justify-center h-40 p-4">
+              <!-- <svg class="w-[40px] h-[40px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                  d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4c0 1.1.9 2 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.8-3.1a5.5 5.5 0 0 0-2.8-6.3c.6-.4 1.3-.6 2-.6a3.5 3.5 0 0 1 .8 6.9Zm2.2 7.1h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1l-.5.8c1.9 1 3.1 3 3.1 5.2ZM4 7.5a3.5 3.5 0 0 1 5.5-2.9A5.5 5.5 0 0 0 6.7 11 3.5 3.5 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4c0 1.1.9 2 2 2h.5a6 6 0 0 1 3-5.2l-.4-.8Z"
+                  clip-rule="evenodd" />
+              </svg> -->
+              <h2 class="text-xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
+            </div>
+          </button>
+        </li>
+      </ul>
     </div>
-    </div>
-    <div class="col">
-      <div class="p-4 space-y-4">
+  </div>
+  <div class="col flex-1">
+    <div class="p-4 space-y-4">
 
-<div class="px-2 overflow-y-auto" style="max-height: 60vh; overflow-y: auto;">
-  <ul v-for="positions in finalVotedList" :key="positions['electpositionid']">
+      <div class="px-2 overflow-y-auto  card rounded bg-white" style="max-height: 70vh;">
+        <ul v-for="positions in finalVotedList" :key="positions['electpositionid']">
 
-    <div class="p-2 bg-primary text-white">
-      <h3 class="text-xl font-semibold ">{{ positions['description'] }}</h3>
-      <!-- <p class="text-center">Select 3 Candidates</p> -->
-    </div>
-    <li v-if="positions['candidates'] && positions['candidates'].length > 0">
-      <div class="p-2 space-y-4" v-for="candidates in positions['candidates']"
-        :key="candidates.ecandidateid">
-        <div class="flex-grow ml-4">
-          <div class="text-lg font-semibold text-center">{{ candidates.delegates.cooperatives.coopname
-            }}
+          <div class="p-2 bg-primary text-white">
+            <h3 class="text-xl font-semibold ">{{ positions['description'] }}</h3>
+            <!-- <p class="text-center">Select 3 Candidates</p> -->
           </div>
-          <p class="text-sm text-center"> Represented by:</p>
-          <div class="text-medium font-bold text-center">{{ candidates.candidate_name }}</div>
-        </div>
-      </div>
-      <hr>
-    </li>
-    <li v-else>
-      <div class="p-6 ">
-        <p class="text-m">No candidate/s selected</p>
-      </div>
-    </li>
+          <li v-if="positions['candidates'] && positions['candidates'].length > 0">
+            <div class="p-2 space-y-4" v-for="candidates in positions['candidates']" :key="candidates.ecandidateid">
+              <div class="flex-grow ml-4">
+                <div class="text-lg font-semibold text-center">{{ candidates.delegates.cooperatives.coopname
+                  }}
+                </div>
+                <p class="text-sm text-center"> Represented by:</p>
+                <div class="text-medium font-bold text-center">{{ candidates.candidate_name }}</div>
+              </div>
+            </div>
+            <hr>
+          </li>
+          <li v-else>
+            <div class="p-6 ">
+              <p class="text-m">No candidate/s selected</p>
+            </div>
+          </li>
 
-  </ul>
+        </ul>
 
-</div>
-</div>
+      </div>
     </div>
-    </div>
-    
-    
+  </div>
+</div>
+
+
+
     <!-- Voting Modal -->
     <div class="flex justify-center items-center">
       <transition name="modal-fade">
@@ -164,28 +168,31 @@
                 </div>
                 <div class="px-2 overflow-y-auto " style="max-height: 50vh; overflow-y: auto;">
                   <ul>
-                    <li v-for="candidate in temporaryCandidates" :key="candidate['ecandidateid']">
-                      <div class="p-2 space-y-4">
-                        <div class="flex items-center w-full p-5 bg-gray-100 rounded-lg shadow-md">
-                          <input :id="candidate.ecandidateid" type="checkbox"
-                            :checked="isCandidateVoted(candidate['ecandidateid'])" @change="selectCandidates($event)"
-                            name="bordered-checkbox"
-                            class="w-8 mr-3 h-8 text-white bg-white border-gray-300 rounded focus:ring-blue-500">
+  <li v-for="candidate in temporaryCandidates" :key="candidate['ecandidateid']">
+    <label :for="'checkbox_' + candidate.ecandidateid" class="cursor-pointer">
+      <div class="p-2 space-y-4">
+        <div class="flex items-center w-full p-5 bg-gray-100 rounded-lg shadow-md">
+          <input :id="'checkbox_' + candidate.ecandidateid" type="checkbox"
+            :checked="isCandidateVoted(candidate['ecandidateid'])" @change="selectCandidates($event, candidate)"
+            name="bordered-checkbox"
+            class="w-8 mr-3 h-8 text-white bg-white border-gray-300 rounded focus:ring-blue-500">
 
-                          <div>
+          <div>
 
-                            <div id="profileImage">{{ generateInitials(candidate['candidate_name']) }}</div>
-                          </div>
-                          <div class="flex-grow ml-4">
-                            <div class="text-lg font-semibold text-start">
-                              {{ candidate['delegates']['cooperatives']['coopname'] }}e</div>
-                            <p class="text-sm text-start"> Represented by:</p>
-                            <div class="text-medium font-bold text-start">{{ candidate['candidate_name'] }}</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+            <div id="profileImage">{{ generateInitials(candidate['candidate_name']) }}</div>
+          </div>
+          <div class="flex-grow ml-4">
+            <div class="text-lg font-semibold text-start">
+              {{ candidate['delegates']['cooperatives']['coopname'] }}e</div>
+            <p class="text-sm text-start"> Represented by:</p>
+            <div class="text-medium font-bold text-start">{{ candidate['candidate_name'] }}</div>
+          </div>
+        </div>
+      </div>
+    </label>
+  </li>
+</ul>
+
                 </div>
               </div>
               <!-- Modal footer -->
@@ -405,7 +412,7 @@ export default {
         console.log(error);
       }
       this.fetchElectPosition();
-      
+
     },
 
     getCandidatesResult() {
