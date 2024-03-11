@@ -19,6 +19,12 @@ const routes: Array<RouteRecordRaw> = [
       meta: { title: 'Home' } ,
       component: () => import("../views/voting.vue"  as any),
     },
+    {
+    path: "/print",
+      name: 'print result',
+      meta: { title: 'Print' } ,
+      component: () => import("../views/printResult.vue"  as any),
+    },
     // {
     //   path: "/",
     //   name: 'Login',

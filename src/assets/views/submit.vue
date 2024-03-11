@@ -1,5 +1,15 @@
 <template>
     <div class="h-screen w-screen">
+         <!-- Navigation Bar -->
+   <nav class="bg-primary p-2 w-screen">
+      <div class="container">
+        <div class="flex justify-start ">
+          <img src="https://www.climbs.coop/wp-content/uploads/2021/10/climbs-logo.jpg" alt="Sample Image"
+            class="w-10 h-10 ">
+        </div>
+      </div>
+    </nav>
+
         <div class="stepper flex justify-center mt-4">
             <!-- Stepper -->
             <ul class="relative flex flex-col md:flex-row gap-2">
