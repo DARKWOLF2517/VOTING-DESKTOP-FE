@@ -79,7 +79,9 @@
         </svg>
       </button>
     </div>
-    <!-- Category Buttons -->
+    <div class="row flex justify-center">
+      <div class="col">
+      <!-- Category Buttons -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-6">
       <button class="bg-white hover:bg-accent hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none"
         @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])"
@@ -90,12 +92,50 @@
             <path fill-rule="evenodd"
               d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4c0 1.1.9 2 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.8-3.1a5.5 5.5 0 0 0-2.8-6.3c.6-.4 1.3-.6 2-.6a3.5 3.5 0 0 1 .8 6.9Zm2.2 7.1h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1l-.5.8c1.9 1 3.1 3 3.1 5.2ZM4 7.5a3.5 3.5 0 0 1 5.5-2.9A5.5 5.5 0 0 0 6.7 11 3.5 3.5 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4c0 1.1.9 2 2 2h.5a6 6 0 0 1 3-5.2l-.4-.8Z"
               clip-rule="evenodd" />
-          </svg>
+          </svg>  
           <h2 class="text-xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
         </div>
       </button>
 
     </div>
+    </div>
+    <div class="col">
+      <div class="p-4 space-y-4">
+
+<div class="px-2 overflow-y-auto" style="max-height: 60vh; overflow-y: auto;">
+  <ul v-for="positions in finalVotedList" :key="positions['electpositionid']">
+
+    <div class="p-2 bg-primary text-white">
+      <h3 class="text-xl font-semibold ">{{ positions['description'] }}</h3>
+      <!-- <p class="text-center">Select 3 Candidates</p> -->
+    </div>
+    <li v-if="positions['candidates'] && positions['candidates'].length > 0">
+      <div class="p-2 space-y-4" v-for="candidates in positions['candidates']"
+        :key="candidates.ecandidateid">
+        <div class="flex-grow ml-4">
+          <div class="text-lg font-semibold text-center">{{ candidates.delegates.cooperatives.coopname
+            }}
+          </div>
+          <p class="text-sm text-center"> Represented by:</p>
+          <div class="text-medium font-bold text-center">{{ candidates.candidate_name }}</div>
+        </div>
+      </div>
+      <hr>
+    </li>
+    <li v-else>
+      <div class="p-6 ">
+        <p class="text-m">No candidate/s selected</p>
+      </div>
+    </li>
+
+  </ul>
+
+</div>
+</div>
+    </div>
+    </div>
+    
+    
     <!-- Voting Modal -->
     <div class="flex justify-center items-center">
       <transition name="modal-fade">
@@ -132,9 +172,9 @@
                             name="bordered-checkbox"
                             class="w-8 mr-3 h-8 text-white bg-white border-gray-300 rounded focus:ring-blue-500">
 
-                          <div class="flex-shrink-0 h-20 w-20 bg-cover bg-center rounded overflow-hidden">
-                            <img src="https://htmlstream.com/preview/unify-v2.6/assets/img-temp/400x450/img5.jpg"
-                              alt="candidate-image">
+                          <div>
+
+                            <div id="profileImage">{{ generateInitials(candidate['candidate_name']) }}</div>
                           </div>
                           <div class="flex-grow ml-4">
                             <div class="text-lg font-semibold text-start">
@@ -280,6 +320,8 @@
 import axios from 'axios';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import { generate } from "text-to-image";
+import textToImage from 'text-to-image';
 export default {
   data() {
     return {
@@ -311,13 +353,24 @@ export default {
   mounted() {
 
     this.fetchArea();
-    if(!sessionStorage.getItem("ballotcode")){
+
+
+    //to check the session
+    if (!sessionStorage.getItem("ballotcode")) {
       window.location.href = '/';
     }
-    console.log(sessionStorage.getItem("ballotcode"))
+
 
   },
   methods: {
+    generateInitials(fullname: string) {
+      var names = fullname.split(' ');
+      var lastName = names.pop(); // Remove and get the last name
+      var firstName = names.slice(0, 1).join(' '); // Join the remaining items as first name(s)
+
+      return firstName.split(' ').map(name => name.charAt(0)).join('') + lastName.charAt(0);
+    },
+
     //to get all elect position
     async fetchElectPosition() {
       try {
@@ -475,7 +528,7 @@ export default {
         const submitVote = await axios.post(this.baseUrl + 'api/submitVote/' + this.ballotCode + '/' + this.delegateId, this.FinalvotedCandidates);
         console.log(submitVote.data);
 
-        window.location.href = '/submit?ballotCode='+ this.ballotCode + '&delegateId=' + this.delegateId;
+        window.location.href = '/submit?ballotCode=' + this.ballotCode + '&delegateId=' + this.delegateId;
         sessionStorage.clear()
 
       } catch (error) {
@@ -516,5 +569,17 @@ export default {
 .modal-fade-enter-from,
 .modal-fade-leave-to {
   opacity: 0;
+}
+
+#profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background: #0100DE;
+  font-size: 40px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 100px;
+  margin: 20px 0;
 }
 </style>

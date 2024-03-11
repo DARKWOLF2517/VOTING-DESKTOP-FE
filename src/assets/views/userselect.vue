@@ -13,9 +13,10 @@
             <form class="mx-auto w-full">
               <label for="countries" class="block mb-2 text-sm font-bold text-primary text-start">Select your
                 name</label>
-              <select  v-model="delegateId" id="countries"
+              <select v-model="delegateId" id="countries"
                 class="text-sm focus:ring-blue-500 block w-full p-2.5 rounded-lg border focus:outline-none border-blue-200 bg-gray-100 dark:placeholder-gray-400  focus:border-blue-500">
-                <option :value="delegates['id']" v-for="delegates in  delegate" :key="delegates['id']">{{ delegates['fullname'] }}</option>
+                <option :value="delegates['id']" v-for="delegates in  delegate" :key="delegates['id']">{{
+                delegates['fullname'] }}</option>
               </select>
             </form>
             <div class="mt-4 flex justify-end">
@@ -42,7 +43,7 @@ export default {
   data() {
     return {
       baseUrl: import.meta.env.VITE_APP_BASE_URL,
-      coopId : sessionStorage.getItem("coopid"),
+      coopId: sessionStorage.getItem("coopid"),
       delegate: [],
       delegateId: "",
     };
@@ -51,7 +52,9 @@ export default {
     // Add animation class after component is mounted
     document.querySelector('.card-animate').classList.add('fade-in-left');
     document.querySelector('.image-animate').classList.add('fade-in');
-
+    if (!sessionStorage.getItem("coopid")) {
+      window.location.href = '/';
+    }
 
     this.fetchDelegates();
   },

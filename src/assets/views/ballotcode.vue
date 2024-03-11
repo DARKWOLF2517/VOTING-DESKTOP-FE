@@ -113,6 +113,9 @@ export default {
         // Add animation class after component is mounted
         document.querySelector('.card-animate').classList.add('fade-in-left');
         document.querySelector('.image-animate').classList.add('fade-in');
+        // if (!sessionStorage.getItem("delegateid")) {
+        //     window.location.href = '/';
+        // }
     },
     methods: {
         async checkBallotCode() {
@@ -122,13 +125,14 @@ export default {
                 const response = await axios.post(this.baseUrl + 'api/check', { ballotCode: this.formData.ballotCode });
                 console.log(response.data)
                 const isValidBallotCode = response.data[0] === 'ballotCode exist';
-                console.log('isValidBallotCode:', isValidBallotCode); // Log the value of isValidBallotCode
+                // console.log('isValidBallotCode:', isValidBallotCode); // Log the value of isValidBallotCode
                 //console.log(response)
                 if (isValidBallotCode) {
                     // Navigate to the next page
                     // this.$router.push('/go');
-                    console.log('naa')
+                    console.log(response.data[1])
                     sessionStorage.setItem("ballotcode", this.formData.ballotCode);
+                    sessionStorage.setItem("delegateid", response.data[1]);
                     window.location.href = '/voting';
 
                     // this.$router.push({ path: '/voting', query: { ballotCode: this.ballotCode } });
@@ -145,7 +149,7 @@ export default {
                 console.log(error);
             }
         },
-        showError(message:any) {
+        showError(message: any) {
             toast.error(message), {
                 autoClose: 100,
             }

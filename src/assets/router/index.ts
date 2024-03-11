@@ -19,12 +19,12 @@ const routes: Array<RouteRecordRaw> = [
       meta: { title: 'Home' } ,
       component: () => import("../views/voting.vue"  as any),
     },
-    {
-      path: "/",
-      name: 'Login',
-      meta: { title: 'Home' } ,
-      component: () => import("../views/login.vue"  as any),
-    },
+    // {
+    //   path: "/",
+    //   name: 'Login',
+    //   meta: { title: 'Home' } ,
+    //   component: () => import("../views/login.vue"  as any),
+    // },
     {
       path: "/userselect",
       name: 'User Selection',
@@ -32,7 +32,7 @@ const routes: Array<RouteRecordRaw> = [
       component: () => import("../views/userselect.vue" as any) ,
     },
     {
-      path: "/ballotcode",
+      path: "/",
       name: 'Ballot Code',
       meta: { title: 'Home' } ,
       component: () => import("../views/ballotcode.vue"  as any),

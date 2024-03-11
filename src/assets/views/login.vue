@@ -60,6 +60,7 @@ export default {
     // Add animation class after component is mounted
     document.querySelector('.card-animate').classList.add('fade-in-left');
     document.querySelector('.image-animate').classList.add('fade-in');
+
   },
   methods: {
     async login() {
