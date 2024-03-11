@@ -65,24 +65,32 @@
             </ul>
             <!-- End Stepper -->
         </div>
+        <h1 class="h1-large  text-primary font-bold">Vote Submitted </h1>
+    <p class="text-lg ">Thank you for Voting!</p>
         <div class="flex justify-center items-center">
             <div class="container px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
                 <div class=" image-bg image-animate">
-                    <img class=" w-full bg-cover" src="/src/assets/images/thankyou.png" alt="alternative">
+                    <img class=" w-full bg-cover" src="/src/assets/images/welcome-bg.png" alt="alternative">
                 </div>
                 <div class="mb-16 lg:mt-32 xl:mt-10 xl:mr-12 px-10 card-animate">
                     <div class="bg-white rounded-lg p-6 h-full shadow-2xl">
-                        <div class="flex justify-center">
-                            <img :src="url" alt="" class="h-60">
+                        <div class="flex justify-center mt-2">
+                            <img :src="url" alt="" class="h-80">
                         </div>
 
-                        <p class="text-3xl mb-2 text-primary font-bold">Scan QR Code</p>
-                        <p class="p-large mb-6 text-primary">Please secure a copy of your QR code for printing. Thank
+                        <p class="text-3xl mb-2 mt-2 text-primary font-bold">Secure QR Code</p>
+                        <p class="p-large mb-6  text-xl">Please secure a copy of your QR code for printing. Thank
                             you for Voting!</p>
                         <div class="flex justify-center">
                             <button @click="download()" type="button"
-                                class="text-white bg-primary hover:bg-accent w-full md:w-auto md:mr-0 flex justify-center items-center">
+                                class="text-white text-lg bg-primary hover:bg-accent w-96 justify-center items-center">
                                 Download QR Code
+                            </button>
+                        </div>
+                        <div class="flex justify-center mt-2">
+                            <button @click="print()" type="button"
+                                class="text-black text-lg bg-secondary hover:bg-accent w-96 flex justify-center items-center">
+                                Print Result
                             </button>
                         </div>
                     </div>
