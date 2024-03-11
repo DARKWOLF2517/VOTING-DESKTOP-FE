@@ -68,7 +68,7 @@
     <h1 class="h1-large  text-primary font-bold">Cast Vote</h1>
     <p class="p-large ">Select Candidate of choice</p>
     <div class="flex justify-end mr-4">
-      <button type="button"
+      <!-- <button type="button"
         class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center"
         @click="getCandidatesResult(), showSummaryModal = true;">
         View Summary
@@ -77,24 +77,36 @@
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1" />
         </svg>
+      </button> -->
+        <button type="button"
+        class="text-white bg-accent hover:bg-primary mr-4 w-80 md:w-auto md:mr-0 flex justify-center items-center"
+        @click="  checkSubmission()">
+        Submit Ballot
+        <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          fill="none" viewBox="0 0 8 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1" />
+        </svg>
       </button>
+    
     </div>
     <div class="row flex justify-between gap-4">
       <div class="col flex-1">
         <!-- Category Buttons -->
-        <div class="px-4 overflow-y-auto" style="max-height: 70vh;">
-          <ul class="list-none">
+        <div class="p-6 ">
+          <ul class="list-none flex flex-wrap justify-center gap-4">
             <li v-for="positions in electPosition" :key="positions['electpositionid']">
               <button
-                class="bg-white hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none w-full mb-4"
+                class="bg-white text-wrap w-96 hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4"
                 @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])">
+
                 <div class="flex items-center justify-center h-40 p-4">
-                  <!-- <svg class="w-[40px] h-[40px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  <svg class="w-[40px] h-[40px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd"
                   d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4c0 1.1.9 2 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.8-3.1a5.5 5.5 0 0 0-2.8-6.3c.6-.4 1.3-.6 2-.6a3.5 3.5 0 0 1 .8 6.9Zm2.2 7.1h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1l-.5.8c1.9 1 3.1 3 3.1 5.2ZM4 7.5a3.5 3.5 0 0 1 5.5-2.9A5.5 5.5 0 0 0 6.7 11 3.5 3.5 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4c0 1.1.9 2 2 2h.5a6 6 0 0 1 3-5.2l-.4-.8Z"
                   clip-rule="evenodd" />
-              </svg> -->
+              </svg>
                   <h2 class="text-xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
                 </div>
               </button>
@@ -105,7 +117,7 @@
       <div class="col flex-1">
         <div class="p-4 space-y-4">
 
-          <div class="px-2 overflow-y-auto  card rounded bg-white" style="max-height: 70vh;">
+          <div class="px-2 overflow-y-auto  card rounded bg-white" style="max-height: 80vh;">
             <ul v-for="positions in finalVotedList" :key="positions['electpositionid']">
 
               <div class="p-2 bg-primary text-white">
@@ -172,8 +184,8 @@
                         <div class="p-2 space-y-4">
                           <div class="flex items-center w-full p-5 bg-gray-100 rounded-lg shadow-md">
                             <input :id="candidate.ecandidateid" type="checkbox"
-                              :checked="isCandidateVoted(candidate['ecandidateid'])"
-                              @change="selectCandidates($event)" name="bordered-checkbox"
+                              :checked="isCandidateVoted(candidate['ecandidateid'])" @change="selectCandidates($event)"
+                              name="bordered-checkbox"
                               class="w-8 mr-3 h-8 text-white bg-white border-gray-300 rounded focus:ring-blue-500">
 
                             <div>
@@ -208,7 +220,7 @@
                 </button>
                 <button v-else-if="totalVoted >= voteCategory.no_of_winner" @click="showModal = false, saveVote()"
                   :disabled="true" type="button"
-                  class="text-white bg-gray-300 hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                  class="text-white bg-gray-300 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                   Save
                 </button>
 
@@ -473,7 +485,7 @@ export default {
 
     //trigger when choosing candidate
     selectCandidates(event: any) {
-      
+
       console.log((event.target));
       console.log("Checked state:", event.target.checked);
       console.log("Checkbox id:", parseInt(event.target.id));
