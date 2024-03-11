@@ -76,7 +76,7 @@
             <!-- End Stepper -->
         </div>
         <h1 class="h1-large  text-primary font-bold">Vote Submitted </h1>
-    <p class="text-lg ">Thank you for Voting!</p>
+        <p class="text-lg ">Thank you for Voting!</p>
         <div class="flex justify-center items-center">
             <div class="container px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
                 <div class=" image-bg image-animate">
@@ -117,6 +117,7 @@ export default {
         return {
             baseUrl: import.meta.env.VITE_APP_BASE_URL,
             url: "",
+            ballotCode: this.$route.query.ballotCode,
         };
     },
     mounted() {
@@ -126,18 +127,30 @@ export default {
         this.generateQR()
     },
     methods: {
+        async print() {
+            try {
+                const getDataPrint = await this.axios.get(this.baseUrl + 'api/fetchVoteResult/' + this.ballotCode);
+                console.log(getDataPrint.data);
+                // this.$router.push(getDataPrint.data);
+             // Your Laravel backend base URL
+                const url = this.baseUrl + 'api/fetchVoteResult/'+ this.ballotCode;
+                window.open(url);
+                console.log(url)
+            } catch (error) {
+                console.log(error);
+            }
+        },
         async download() {
             const qr = document.createElement('a');
             qr.href = this.url;
-            qr.download = this.$route.query.delegateId+ '_'+ this.$route.query.ballotCode+'_'+'qrcode.svg';
+            qr.download = this.$route.query.delegateId + '_' + this.$route.query.ballotCode + '_' + 'qrcode.svg';
             qr.click();
         },
         async generateQR() {
             const config = {
                 headers: { Authorization: `Bearer ${localStorage.TOKEN}` },
             };
-            let ballotCode = this.$route.query.ballotCode;
-            let url = this.baseUrl + `api/generateQR/` + ballotCode;
+            let url = this.baseUrl + `api/generateQR/` + this.ballotCode;
             // this.showLoading();
 
             await this.axios.get(url).then((response) => {

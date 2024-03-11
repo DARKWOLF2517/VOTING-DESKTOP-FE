@@ -116,262 +116,265 @@
         </button>
       </div>
     </div>
-    
 
 
-<div  v-if="!isLoading" class="wrap-content">
-  
-    <div class="row flex justify-between gap-4 p-4">
-      <div class="col flex-1">
-        <!-- Category Buttons -->
-        <div class="p-6 ">
-          <ul class="list-none flex flex-wrap justify-center gap-4">
-            <li v-for="positions in electPosition" :key="positions['electpositionid']">
-              <button
-                class="bg-white text-wrap w-96 hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4"
-                @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])">
 
-                <div class="flex items-center justify-center h-40 p-4">
-                  <!-- <svg class="w-[40px] h-[40px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+    <div v-if="!isLoading" class="wrap-content">
+
+      <div class="row flex justify-between gap-4 p-4">
+        <div class="col flex-1">
+          <!-- Category Buttons -->
+          <div class="p-6 ">
+            <ul class="list-none flex flex-wrap justify-center gap-4">
+              <li v-for="positions in electPosition" :key="positions['electpositionid']">
+                <button
+                  class="bg-white text-wrap w-96 hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4"
+                  @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])">
+
+                  <div class="flex items-center justify-center h-40 p-4">
+                    <!-- <svg class="w-[40px] h-[40px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                       d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4c0 1.1.9 2 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.8-3.1a5.5 5.5 0 0 0-2.8-6.3c.6-.4 1.3-.6 2-.6a3.5 3.5 0 0 1 .8 6.9Zm2.2 7.1h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1l-.5.8c1.9 1 3.1 3 3.1 5.2ZM4 7.5a3.5 3.5 0 0 1 5.5-2.9A5.5 5.5 0 0 0 6.7 11 3.5 3.5 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4c0 1.1.9 2 2 2h.5a6 6 0 0 1 3-5.2l-.4-.8Z"
                       clip-rule="evenodd" />
                   </svg> -->
-                  <h2 class="text-2xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
-                </div>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col flex-1">
-        <div class="p-4 space-y-4">
-
-          <div class="overflow-y-auto " style="max-height: 80vh;">
-            <ul v-for="positions in finalVotedList" :key="positions['electpositionid']" class="bg-white">
-              
-              <div class="p-2 bg-primary text-white">
-                <h3 class="text-2xl font-semibold ">{{ positions['description'] }}</h3>
-                <!-- <p class="text-center">Select 3 Candidates</p> -->
-              </div>
-              <li v-if="positions['candidates'] && positions['candidates'].length > 0">
-
-                <div class="p-2 space-y-4 flex justify-between border-b border-gray-300" v-for="candidates in positions['candidates']" :key="candidates.ecandidateid">
-                  <div class="flex-grow ml-4 ">
-                    <div class="text-xl font-semibold text-center">{{ candidates.delegates.cooperatives.coopname
-                      }}
-                    </div>
-                    <p class="text-sm text-center"> Represented by:</p>
-                    <div class="text-2xl font-bold text-center">{{ candidates.candidate_name }}</div>
+                    <h2 class="text-2xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
                   </div>
-                  <div class="flex justify-end">
-                    <button class="bg-red-400 text-white h-10 p-2 hover:bg-accent">
-                      <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path fill-rule="evenodd"
-                          d="M8.6 2.6A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4c0-.5.2-1 .6-1.4ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+                </button>
               </li>
-              <li v-else>
-                <div class="p-6 ">
-                  <p class="text-2xl">No candidate/s selected</p>
-                </div>
-              </li>
-
             </ul>
+          </div>
+        </div>
+        <div class="col flex-1">
+          <div class="p-4 space-y-4">
 
+            <div class="overflow-y-auto " style="max-height: 80vh;">
+              <ul v-for="positions in finalVotedList" :key="positions['electpositionid']" class="bg-white">
+
+                <div class="p-2 bg-primary text-white">
+                  <h3 class="text-2xl font-semibold ">{{ positions['description'] }}</h3>
+                  <!-- <p class="text-center">Select 3 Candidates</p> -->
+                </div>
+                <li v-if="positions['candidates'] && positions['candidates'].length > 0">
+
+                  <div class="p-2 space-y-4 flex justify-between border-b border-gray-300"
+                    v-for="candidates in positions['candidates']" :key="candidates.ecandidateid">
+                    <div class="flex-grow ml-4 ">
+                      <div class="text-xl font-semibold text-center">{{ candidates.delegates.cooperatives.coopname
+                        }}
+                      </div>
+                      <p class="text-sm text-center"> Represented by:</p>
+                      <div class="text-2xl font-bold text-center">{{ candidates.candidate_name }}</div>
+                    </div>
+                    <div class="flex justify-end">
+                      <button class="bg-red-400 text-white h-10 p-2 hover:bg-accent"
+                        @click="removeVote(candidates.ecandidateid)">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                          <path fill-rule="evenodd"
+                            d="M8.6 2.6A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4c0-.5.2-1 .6-1.4ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li v-else>
+                  <div class="p-6 ">
+                    <p class="text-2xl">No candidate/s selected</p>
+                  </div>
+                </li>
+
+              </ul>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-    <!-- Voting Modal -->
-    <div class="flex justify-center items-center">
-      <transition name="modal-fade">
-        <div v-if="showModal" id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-          class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
+  <!-- Voting Modal -->
+  <div class="flex justify-center items-center">
+    <transition name="modal-fade">
+      <div v-if="showModal" id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
 
-          <div class="bg-white rounded-lg overflow-hidden shadow-lg w-full max-w-2xl">
-            <div class="p-4">
-              <!-- Modal header -->
-              <div class="flex items-center justify-between border-b 0 ">
-                <button @click="showModal = false, closeCandidateModal()"
-                  class="text-primary mb-2 font-bold bg-white hover:bg-accent md:w-auto md:mr-0 text-sm ms-auto inline-flex justify-center items-center">
-                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                  </svg>
-                  <span class="sr-only">Close modal</span>
-                </button>
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg w-full max-w-2xl">
+          <div class="p-4">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between border-b 0 ">
+              <button @click="showModal = false, closeCandidateModal()"
+                class="text-primary mb-2 font-bold bg-white hover:bg-accent md:w-auto md:mr-0 text-sm ms-auto inline-flex justify-center items-center">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 space-y-4">
+              <div class="p-2 bg-primary text-white">
+                <h3 class="text-2xl font-semibold ">{{ voteCategory.description }}</h3>
+                <p class="text-center">Select {{ voteCategory.no_of_winner }} Candidates</p>
               </div>
-              <!-- Modal body -->
-              <div class="p-4 space-y-4">
-                <div class="p-2 bg-primary text-white">
-                  <h3 class="text-2xl font-semibold ">{{ voteCategory.description }}</h3>
-                  <p class="text-center">Select {{ voteCategory.no_of_winner }} Candidates</p>
-                </div>
-                <div class="px-2 overflow-y-auto " style="max-height: 50vh; overflow-y: auto;">
-                  <ul>
-                    <li v-for="candidate in temporaryCandidates" :key="candidate['ecandidateid']">
-                      <label :for="candidate.ecandidateid" class="cursor-pointer">
-                        <div class="p-2 space-y-4">
-                          <div class="flex items-center w-full p-5 bg-gray-100 rounded-lg shadow-md">
-                            <input :id="candidate.ecandidateid" type="checkbox"
-                              :checked="isCandidateVoted(candidate['ecandidateid'])" @change="selectCandidates($event)"
-                              name="bordered-checkbox"
-                              class="w-8 mr-3 h-8 text-white bg-white border-gray-300 rounded focus:ring-blue-500">
+              <div class="px-2 overflow-y-auto " style="max-height: 50vh; overflow-y: auto;">
+                <ul>
+                  <li v-for="candidate in temporaryCandidates" :key="candidate['ecandidateid']">
+                    <label :for="candidate.ecandidateid" class="cursor-pointer">
+                      <div class="p-2 space-y-4">
+                        <div class="flex items-center w-full p-5 bg-gray-100 rounded-lg shadow-md">
+                          <input :id="candidate.ecandidateid" type="checkbox"
+                            :checked="isCandidateVoted(candidate['ecandidateid'])" @change="selectCandidates($event)"
+                            name="bordered-checkbox"
+                            class="w-8 mr-3 h-8 text-white bg-white border-gray-300 rounded focus:ring-blue-500">
 
-                            <div>
+                          <div>
 
-                              <div id="profileImage">{{ generateInitials(candidate['candidate_name']) }}</div>
-                            </div>
-                            <div class="flex-grow ml-4">
-                              <div class="text-wrap font-semibold text-start">
-                                {{ candidate['delegates']['cooperatives']['coopname'] }}e</div>
-                              <p class="text-sm text-start"> Represented by:</p>
-                              <div class="text-2xl font-bold text-start text-primary">{{ candidate['candidate_name'] }}</div>
+                            <div id="profileImage">{{ generateInitials(candidate['candidate_name']) }}</div>
+                          </div>
+                          <div class="flex-grow ml-4">
+                            <div class="text-wrap font-semibold text-start">
+                              {{ candidate['delegates']['cooperatives']['coopname'] }}e</div>
+                            <p class="text-sm text-start"> Represented by:</p>
+                            <div class="text-2xl font-bold text-start text-primary">{{ candidate['candidate_name'] }}
                             </div>
                           </div>
                         </div>
-                      </label>
-                    </li>
-                  </ul>
-
-                </div>
-              </div>
-              <!-- Modal footer -->
-              <div class="flex items-center justify-end p-4 border-t">
-
-                <button @click="showModal = false, closeCandidateModal()" type="button"
-                  class="py-2.5 mr-2 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-accent hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
-                  Close
-                </button>
-                <button v-if="totalVoted <= voteCategory.no_of_winner" @click="showModal = false, saveVote()"
-                  type="button"
-                  class="text-white bg-blue-700 hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                  Save
-                </button>
-                <button v-else-if="totalVoted >= voteCategory.no_of_winner" @click="showModal = false, saveVote()"
-                  :disabled="true" type="button"
-                  class="text-white bg-gray-300 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                  Save
-                </button>
+                      </div>
+                    </label>
+                  </li>
+                </ul>
 
               </div>
             </div>
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-4 border-t">
+
+              <button @click="showModal = false, closeCandidateModal()" type="button"
+                class="py-2.5 mr-2 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-accent hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                Close
+              </button>
+              <button v-if="totalVoted <= voteCategory.no_of_winner" @click="showModal = false, saveVote()"
+                type="button"
+                class="text-white bg-blue-700 hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                Save
+              </button>
+              <button v-else-if="totalVoted >= voteCategory.no_of_winner" @click="showModal = false, saveVote()"
+                :disabled="true" type="button"
+                class="text-white bg-gray-300 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                Save
+              </button>
+
+            </div>
           </div>
-
         </div>
-      </transition>
-    </div>
-    <!-- Summary Modal -->
-    <div class="flex justify-center items-center">
-      <transition name="modal-fade">
-        <div v-if="showSummaryModal" id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-          class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
 
-          <div class="bg-white rounded-lg overflow-hidden shadow-lg w-full max-w-2xl">
-            <div class="p-4">
-              <!-- Modal header -->
-              <div class="flex items-center justify-between border-b 0 ">
-                <h3 class="text-2xl py-2">Summary of Votes</h3>
-                <button @click="showSummaryModal = false"
-                  class="text-primary mb-2 font-bold bg-white hover:bg-accent md:w-auto md:mr-0 text-sm ms-auto inline-flex justify-center items-center">
-                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                  </svg>
-                  <span class="sr-only">Close modal</span>
-                </button>
-              </div>
-              <!-- Modal body -->
-              <div class="p-4 space-y-4">
+      </div>
+    </transition>
+  </div>
+  <!-- Summary Modal -->
+  <div class="flex justify-center items-center">
+    <transition name="modal-fade">
+      <div v-if="showSummaryModal" id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
 
-                <div class="px-2 overflow-y-auto" style="max-height: 60vh; overflow-y: auto;">
-                  <ul v-for="positions in finalVotedList" :key="positions['electpositionid']">
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg w-full max-w-2xl">
+          <div class="p-4">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between border-b 0 ">
+              <h3 class="text-2xl py-2">Summary of Votes</h3>
+              <button @click="showSummaryModal = false"
+                class="text-primary mb-2 font-bold bg-white hover:bg-accent md:w-auto md:mr-0 text-sm ms-auto inline-flex justify-center items-center">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 space-y-4">
 
-                    <div class="p-2 bg-primary text-white">
-                      <h3 class="text-xl font-semibold ">{{ positions['description'] }}</h3>
-                      <!-- <p class="text-center">Select 3 Candidates</p> -->
+              <div class="px-2 overflow-y-auto" style="max-height: 60vh; overflow-y: auto;">
+                <ul v-for="positions in finalVotedList" :key="positions['electpositionid']">
+
+                  <div class="p-2 bg-primary text-white">
+                    <h3 class="text-xl font-semibold ">{{ positions['description'] }}</h3>
+                    <!-- <p class="text-center">Select 3 Candidates</p> -->
+                  </div>
+                  <li v-if="positions['candidates'] && positions['candidates'].length > 0">
+                    <div class="p-2 space-y-4" v-for="candidates in positions['candidates']"
+                      :key="candidates.ecandidateid">
+                      <div class="flex-grow ml-4">
+                        <div class="text-lg font-semibold text-center">{{ candidates.delegates.cooperatives.coopname
+                          }}
+                        </div>
+                        <p class="text-sm text-center"> Represented by:</p>
+                        <div class="text-medium font-bold text-center">{{ candidates.candidate_name }}</div>
+                      </div>
                     </div>
-                    <li v-if="positions['candidates'] && positions['candidates'].length > 0">
-                      <div class="p-2 space-y-4" v-for="candidates in positions['candidates']"
-                        :key="candidates.ecandidateid">
-                        <div class="flex-grow ml-4">
-                          <div class="text-lg font-semibold text-center">{{ candidates.delegates.cooperatives.coopname
-                            }}
-                          </div>
-                          <p class="text-sm text-center"> Represented by:</p>
-                          <div class="text-medium font-bold text-center">{{ candidates.candidate_name }}</div>
-                        </div>
-                      </div>
-                      <hr>
-                    </li>
-                    <li v-else>
-                      <div class="p-6 ">
-                        <p class="text-m">No candidate/s selected</p>
-                      </div>
-                    </li>
+                    <hr>
+                  </li>
+                  <li v-else>
+                    <div class="p-6 ">
+                      <p class="text-m">No candidate/s selected</p>
+                    </div>
+                  </li>
 
-                  </ul>
+                </ul>
 
-                </div>
-              </div>
-              <!-- Modal footer -->
-              <div class="flex items-center justify-end p-4 border-t">
-
-                <button @click="showSummaryModal = false" type="button"
-                  class="py-2.5 mr-2 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-accent hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
-                  Close
-                </button>
-                <button @click="  checkSubmission()" type="button"
-                  class="text-white bg-blue-700 hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                  Submit
-                </button>
               </div>
             </div>
-          </div>
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-4 border-t">
 
-        </div>
-      </transition>
-    </div>
-    <!-- Confirmation Modal -->
-    <div class="flex justify-center items-center">
-      <transition name="modal-fade">
-        <div v-if="showConfirmationModal" id="static-modal" data-modal-backdrop="static" tabindex="-1"
-          aria-hidden="true" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
-
-          <div class="bg-white rounded-lg overflow-hidden shadow-lg p-6">
-            <div class="p-4">
-              <!-- Modal body -->
-              <div class="p-4 space-y-4">
-                <h1 class="text-4xl font-bold">Confirmation</h1>
-                <p class="text-2xl">Are you sure you want to submit Vote?</p>
-              </div>
-
-              <button @click="showConfirmationModal = false" type="button"
-                class="py-2.5 mr-2 px-5 ms-3  text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-accent hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
-                No, cancel
+              <button @click="showSummaryModal = false" type="button"
+                class="py-2.5 mr-2 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-accent hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                Close
               </button>
-              <button @click="showConfirmationModal = false, submitVote()" type="button"
-                class="text-white bg-blue-700 hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-5 py-2.5 text-center">
-                Yes, I'm sure
+              <button @click="  checkSubmission()" type="button"
+                class="text-white bg-blue-700 hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                Submit
               </button>
             </div>
           </div>
         </div>
 
-      </transition>
-    </div>
+      </div>
+    </transition>
+  </div>
+  <!-- Confirmation Modal -->
+  <div class="flex justify-center items-center">
+    <transition name="modal-fade">
+      <div v-if="showConfirmationModal" id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg p-6">
+          <div class="p-4">
+            <!-- Modal body -->
+            <div class="p-4 space-y-4">
+              <h1 class="text-4xl font-bold">Confirmation</h1>
+              <p class="text-2xl">Are you sure you want to submit Vote?</p>
+            </div>
+
+            <button @click="showConfirmationModal = false" type="button"
+              class="py-2.5 mr-2 px-5 ms-3  text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-accent hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+              No, cancel
+            </button>
+            <button @click="showConfirmationModal = false, submitVote()" type="button"
+              class="text-white bg-blue-700 hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-5 py-2.5 text-center">
+              Yes, I'm sure
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </transition>
+  </div>
 
 </template>
 
@@ -411,7 +414,7 @@ export default {
     }
   },
   mounted() {
-    
+
     this.fetchArea();
 
 
@@ -466,7 +469,7 @@ export default {
         console.log(error);
       }
       this.fetchElectPosition();
-      
+
     },
 
     getCandidatesResult() {
@@ -578,6 +581,16 @@ export default {
       this.closeCandidateModal();
       this.getCandidatesResult();
     },
+    removeVote(ecandidateid: any) {
+      console.log(ecandidateid)
+      console.log(this.FinalvotedCandidates)
+      const indexToRemove = this.FinalvotedCandidates.indexOf(ecandidateid); // Find the index of the item with value 11
+      if (indexToRemove !== -1) {
+        this.FinalvotedCandidates.splice(indexToRemove, 1); // Remove the item at the found index
+      }
+      this.closeCandidateModal();
+      this.getCandidatesResult();
+    },
     checkSubmission() {
       if (this.FinalvotedCandidates.length > 0) {
         this.showConfirmationModal = true;
@@ -647,6 +660,7 @@ export default {
   margin: 20px 0;
   user-select: none;
 }
+
 .loading-overlay {
   position: fixed;
   top: 0;
@@ -670,7 +684,12 @@ export default {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
