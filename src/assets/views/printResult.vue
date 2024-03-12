@@ -1,37 +1,48 @@
 <template>
-    <div class="h-screen w-screen">
+    <div>
         <div class="w-72 md:w-96 bg-white border border-gray-300 rounded-lg p-4">
             <div>
                 <div class="ballot-header ">
-                    <p class="flex justify-start"><b>BALLOT CODE:{{ }} </b></p>
+                    <p class="flex justify-start"><b>BALLOT CODE:{{ this.$route.query.ballotCode }} </b></p>
                     <p class=" flex justify-start mb-2"><b>Date Time Printed: {{ date }}</b></p>
                     <h3 class=" flex justify-start">List of Candidates Voted</h3>
                 </div>
-                <div class="overflow-y-auto " style="max-height: 80vh;">
-                    <ul class="bg-white" v-for="candidates in result">
-                        <div class="p-2 bg-gray-600 text-white">
-                            <h3 class="text-lg font-semibold ">Name of Position {{  }}</h3>
-                            <!-- <p class="text-center">Select 3 Candidates</p> -->
-                        </div>
-                        <li>
-                            <div class="p-2 space-y-4 border-b border-gray-300">
-                                <div class="flex-grow ml-4 ">
-                                    <div class="text-l font-semibold text-center text-wrap"> COOPerative NAME
+                <div>
+                    <div v-for="positions in finalResults">
+                        <ul class="bg-white" v-if="positions['area_no'] == area || positions['area_no'] == 0">
+                            <div class="p-2 bg-gray-600 text-white">
+                                <h3 class="text-lg font-semibold ">Name of Position {{ positions['description'] }}</h3>
+                                <!-- <p class="text-center">Select 3 Candidates</p> -->
+                            </div>
+                            <div v-if="positions.candidates && positions.candidates.length > 0">
+                                <li v-for="candidates in positions.candidates">
+                                    <div class="p-2 space-y-4 border-b border-gray-300">
+                                        <div class="flex-grow ml-4 ">
+                                            <div class="text-l font-semibold text-center text-wrap"> {{
+                        candidates['delegates']['cooperatives']['coopname'] }}
+                                            </div>
+                                            <p class="text-sm text-center"> Represented by:</p>
+                                            <div class="text-lg font-bold text-center">
+                                                {{ candidates['candidate_name'] }}</div>
+                                        </div>
                                     </div>
-                                    <p class="text-sm text-center"> Represented by:</p>
-                                    <div class="text-lg font-bold text-center">CANDIDATE NAME</div>
-                                </div>
+                                </li>
+
 
                             </div>
-                        </li>
-                        <li>
-                            <div class="p-6 ">
-                                <p class="text-xl">No candidate/s selected</p>
+                            <div v-else>
+                                <li >
+                                    <div class="p-6 ">
+                                        <p class="text-xl">No candidate/s selected</p>
+                                    </div>
+                                </li>
                             </div>
-                        </li>
 
-                    </ul>
-                    <div class="flex justify-start">
+                        </ul>
+                    </div>
+
+
+                    <div class="flex justify-start overflow-x-hidden">
                         <p>Signature:______________________________</p>
                     </div>
                 </div>
@@ -51,6 +62,9 @@ export default {
             baseUrl: import.meta.env.VITE_APP_BASE_URL,
             result: [],
             date: '',
+            electPositions: [],
+            area: 0,
+            finalResults: [],
         }
     },
     mounted() {
@@ -67,15 +81,42 @@ export default {
     methods: {
         async fetchData() {
             try {
-                const getData = await this.axios.get(this.baseUrl + 'api/fetchVoteResult/' + 145942104);
-                console.log(getData.data);
-                this.result = getData.data;
+                const getData = await this.axios.get(this.baseUrl + 'api/fetchVoteResult/' + this.$route.query.ballotCode,);
+
+                getData.data.voteData.forEach(element => {
+                    this.result.push(element.candidates.ecandidateid)
+                    // console.log(element.candidates.ecandidateid)
+                });
+                // this.result = getData.data.voteData;
+                this.electPositions = getData.data.electPosition.electpositions;
+                this.area = getData.data.area;
+
                 // this.$router.push(getDataPrint.data);
                 // Your Laravel backend base URL
+                // Filter candidates based on electpositionid
+
+                // Deep copy finalVotedList
+                this.finalResults = this.electPositions.map(element => ({ ...element }));
+
+
+                this.finalResults.forEach(element => {
+                    // console.log(element.candidates)
+                    // Deep copy candidates array
+                    element.candidates = element.candidates.map(candidate => ({ ...candidate }));
+                    // Filter candidates in finalResults
+                    element.candidates = element.candidates.filter(candidate => this.result.includes(candidate.ecandidateid));
+                });
+
+                console.log(this.finalResults)
+
 
             } catch (error) {
                 console.log(error);
             }
+            // setTimeout(() => {
+            //     window.print();
+            // }, 1000)
+
         },
     },
 

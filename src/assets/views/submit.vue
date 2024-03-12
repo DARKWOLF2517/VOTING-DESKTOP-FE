@@ -128,17 +128,18 @@ export default {
     },
     methods: {
         async print() {
-            try {
-                const getDataPrint = await this.axios.get(this.baseUrl + 'api/fetchVoteResult/' + this.ballotCode);
-                console.log(getDataPrint.data);
-                // this.$router.push(getDataPrint.data);
-             // Your Laravel backend base URL
-                const url = this.baseUrl + 'api/fetchVoteResult/'+ this.ballotCode;
-                window.open(url);
-                console.log(url)
-            } catch (error) {
-                console.log(error);
-            }
+            window.location.href = '/print?ballotCode=' + this.ballotCode;
+            // try {
+            //     const getDataPrint = await this.axios.get(this.baseUrl + 'api/fetchVoteResult/' + this.ballotCode);
+            //     console.log(getDataPrint.data);
+            //     // this.$router.push(getDataPrint.data);
+            //  // Your Laravel backend base URL
+            //     const url = this.baseUrl + 'api/fetchVoteResult/'+ this.ballotCode;
+            //     window.open(url);
+            //     console.log(url)
+            // } catch (error) {
+            //     console.log(error);
+            // }
         },
         async download() {
             const qr = document.createElement('a');
