@@ -3,12 +3,11 @@
     <div class="loading-overlay" v-if="isLoading">
       <div class="loading-spinner"></div>
     </div>
-     <!-- Navigation Bar -->
-   <nav class="bg-primary p-2 w-screen">
+    <!-- Navigation Bar -->
+    <nav class="bg-primary p-2 w-screen">
       <div class="container">
         <div class="flex justify-start ">
-          <img src="../images/climbs-logo.jpg" alt="CLIMBS Logo"
-            class="w-10 h-10 ">
+          <img src="../images/climbs-logo.jpg" alt="CLIMBS Logo" class="w-10 h-10 ">
         </div>
       </div>
     </nav>
@@ -82,15 +81,15 @@
     <p class="p-large ">Select Candidate of choice</p>
     <div class="flex justify-between ">
       <div class="flex justify-start ml-4">
-        <button type="button"
-          class=" text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center">
+        <router-link to="/" tag="button"
+          class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center">
           <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 8 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13" />
           </svg>
           Exit Voting
-        </button>
+        </router-link>
       </div>
 
       <div class="flex justify-end mr-4 px-4">

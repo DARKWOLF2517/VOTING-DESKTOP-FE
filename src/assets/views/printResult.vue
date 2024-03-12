@@ -85,22 +85,13 @@ export default {
 
                 getData.data.voteData.forEach(element => {
                     this.result.push(element.candidates.ecandidateid)
-                    // console.log(element.candidates.ecandidateid)
                 });
-                // this.result = getData.data.voteData;
                 this.electPositions = getData.data.electPosition.electpositions;
                 this.area = getData.data.area;
 
-                // this.$router.push(getDataPrint.data);
-                // Your Laravel backend base URL
-                // Filter candidates based on electpositionid
-
                 // Deep copy finalVotedList
                 this.finalResults = this.electPositions.map(element => ({ ...element }));
-
-
                 this.finalResults.forEach(element => {
-                    // console.log(element.candidates)
                     // Deep copy candidates array
                     element.candidates = element.candidates.map(candidate => ({ ...candidate }));
                     // Filter candidates in finalResults
