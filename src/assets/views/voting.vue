@@ -7,7 +7,7 @@
    <nav class="bg-primary p-2 w-screen">
       <div class="container">
         <div class="flex justify-start ">
-          <img src="https://www.climbs.coop/wp-content/uploads/2021/10/climbs-logo.jpg" alt="Sample Image"
+          <img src="../images/climbs-logo.jpg" alt="CLIMBS Logo"
             class="w-10 h-10 ">
         </div>
       </div>
@@ -314,7 +314,7 @@
                           }}
                         </div>
                         <p class="text-sm text-center"> Represented by:</p>
-                        <div class="text-medium font-bold text-center">{{ candidates.candidate_name }}</div>
+                        <div class="text-lgfont-bold text-center">{{ candidates.candidate_name }}</div>
                       </div>
                     </div>
                     <hr>

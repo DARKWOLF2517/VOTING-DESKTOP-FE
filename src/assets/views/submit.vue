@@ -4,7 +4,7 @@
    <nav class="bg-primary p-2 w-screen">
       <div class="container">
         <div class="flex justify-start ">
-          <img src="https://www.climbs.coop/wp-content/uploads/2021/10/climbs-logo.jpg" alt="Sample Image"
+          <img src="../images/climbs-logo.jpg" alt="CLIMBS Logo"
             class="w-10 h-10 ">
         </div>
       </div>
@@ -75,6 +75,7 @@
             </ul>
             <!-- End Stepper -->
         </div>
+        
         <h1 class="h1-large  text-primary font-bold">Vote Submitted </h1>
         <p class="text-lg ">Thank you for Voting!</p>
         <div class="flex justify-center items-center">
@@ -99,10 +100,16 @@
                         </div>
                         <div class="flex justify-center mt-2">
                             <button @click="print()" type="button"
-                                class="text-black text-lg bg-secondary hover:bg-accent w-96 flex justify-center items-center">
+                                class="text-black text-lg bg-accent hover:bg-primary w-96 flex justify-center items-center">
                                 Print Result
                             </button>
                         </div>
+                        <!-- <div class="flex justify-center mt-2">
+                            <button @click="print()" type="button"
+                                class="text-black text-lg bg-secondary hover:bg-primary w-96 flex justify-center items-center">
+                                Exit
+                            </button>
+                        </div> -->
                     </div>
                 </div>
             </div>
