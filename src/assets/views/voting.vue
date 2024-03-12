@@ -439,8 +439,8 @@ export default {
       this.isLoading = false;
       try {
         const getElectPOsition = await axios.get(this.baseUrl + 'api/getElectPosition');
-        this.electPosition = getElectPOsition.data;
-        console.log(getElectPOsition.data);
+        this.electPosition = getElectPOsition.data.electpositions;
+        console.log(getElectPOsition.data.electpositions);
         //filter elect position base on area
         const filteredElectposition = this.electPosition.filter(item => item['area_no'] == this.area || item['area_no'] == 0);
         this.electPosition = filteredElectposition;
@@ -478,6 +478,7 @@ export default {
       console.log(this.electPosition);
 
       this.finalVotedList.forEach(element => {
+        // console.log(element)
         // Deep copy candidates array
         element.candidates = element.candidates.map(candidate => ({ ...candidate }));
         // Filter candidates in finalVotedList
