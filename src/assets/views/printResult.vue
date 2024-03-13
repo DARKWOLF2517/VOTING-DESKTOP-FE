@@ -81,7 +81,7 @@ export default {
     methods: {
         async fetchData() {
             try {
-                const getData = await this.axios.get(this.baseUrl + 'api/fetchVoteResult/' + this.$route.query.ballotCode,);
+                const getData = await axios.get(this.baseUrl + 'api/fetchVoteResult/' + this.$route.query.ballotCode,);
 
                 getData.data.voteData.forEach(element => {
                     this.result.push(element.candidates.ecandidateid)

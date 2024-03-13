@@ -374,8 +374,6 @@
 import axios from 'axios';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
-import { generate } from "text-to-image";
-import textToImage from 'text-to-image';
 export default {
   data() {
     return {
