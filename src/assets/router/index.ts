@@ -20,6 +20,12 @@ const routes: Array<RouteRecordRaw> = [
       component: () => import("../views/voting.vue"  as any),
     },
     {
+      path: "/InputBallotCodeforPrint",
+      name: 'Home',
+      meta: { title: 'Home' } ,
+      component: () => import("../views/inputballotcodeforprint.vue"  as any),
+    },
+    {
     path: "/print",
       name: 'print result',
       meta: { title: 'Print' } ,
@@ -54,6 +60,7 @@ const routes: Array<RouteRecordRaw> = [
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
   });
+
 
   
 export default router;
