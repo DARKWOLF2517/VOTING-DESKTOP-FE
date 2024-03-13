@@ -15,14 +15,14 @@ const routes: Array<RouteRecordRaw> = [
     // },
     {
       path: "/voting",
-      name: 'Home',
-      meta: { title: 'Home' } ,
+      name: 'voting',
+      meta: { title: 'voting' } ,
       component: () => import("../views/voting.vue"  as any),
     },
     {
       path: "/InputBallotCodeforPrint",
-      name: 'print',
-      meta: { title: 'print' } ,
+      name: 'inputballot',
+      meta: { title: 'EnterBallotToPrint' } ,
       component: () => import("../views/inputballotcodeforprint.vue"  as any),
     },
     {
@@ -40,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
     {
       path: "/userselect",
       name: 'User Selection',
-      meta: { title: 'Home' } ,
+      meta: { title: 'UserSelect' } ,
       component: () => import("../views/userselect.vue" as any) ,
     },
     {

@@ -1,14 +1,13 @@
 <template>
     <div class="h-screen w-screen">
-         <!-- Navigation Bar -->
-   <nav class="bg-primary p-2 w-screen">
-      <div class="container">
-        <div class="flex justify-start ">
-          <img src="../images/climbs-logo.jpg" alt="CLIMBS Logo"
-            class="w-10 h-10 ">
-        </div>
-      </div>
-    </nav>
+        <!-- Navigation Bar -->
+        <nav class="bg-primary p-2 w-screen">
+            <div class="container">
+                <div class="flex justify-start ">
+                    <img src="../images/climbs-logo.jpg" alt="CLIMBS Logo" class="w-10 h-10 ">
+                </div>
+            </div>
+        </nav>
 
         <div class="stepper flex justify-center mt-4">
             <!-- Stepper -->
@@ -75,7 +74,17 @@
             </ul>
             <!-- End Stepper -->
         </div>
-        
+        <div class="flex justify-start ml-4">
+            <router-link to="/" tag="button"
+                class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center rounded p-4">
+                <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 8 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13" />
+                </svg>
+                Exit Voting
+            </router-link>
+        </div>
         <h1 class="h1-large  text-primary font-bold">Vote Submitted </h1>
         <p class="text-lg ">Thank you for Voting!</p>
         <div class="flex justify-center items-center">
@@ -83,6 +92,7 @@
                 <div class=" image-bg image-animate">
                     <img class=" w-full bg-cover" src="/src/assets/images/welcome-bg.png" alt="alternative">
                 </div>
+
                 <div class="mb-16 lg:mt-32 xl:mt-10 xl:mr-12 px-10 card-animate">
                     <div class="bg-white rounded-lg p-6 h-full shadow-2xl">
                         <div class="flex justify-center mt-2">
