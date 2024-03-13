@@ -82,7 +82,7 @@
     <div class="flex justify-between ">
       <div class="flex justify-start ml-4">
         <router-link to="/" tag="button"
-          class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center">
+          class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center rounded p-4">
           <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 8 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -127,16 +127,9 @@
             <ul class="list-none flex flex-wrap justify-center gap-4">
               <li v-for="positions in electPosition" :key="positions['electpositionid']">
                 <button
-                  class="bg-white text-wrap w-96 hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4"
+                  class="bg-white text-wrap w-96 hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4 animate-entry"
                   @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])">
-
                   <div class="flex items-center justify-center h-40 p-4">
-                    <!-- <svg class="w-[40px] h-[40px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd"
-                      d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4c0 1.1.9 2 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.8-3.1a5.5 5.5 0 0 0-2.8-6.3c.6-.4 1.3-.6 2-.6a3.5 3.5 0 0 1 .8 6.9Zm2.2 7.1h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1l-.5.8c1.9 1 3.1 3 3.1 5.2ZM4 7.5a3.5 3.5 0 0 1 5.5-2.9A5.5 5.5 0 0 0 6.7 11 3.5 3.5 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4c0 1.1.9 2 2 2h.5a6 6 0 0 1 3-5.2l-.4-.8Z"
-                      clip-rule="evenodd" />
-                  </svg> -->
                     <h2 class="text-2xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
                   </div>
                 </button>
@@ -150,13 +143,13 @@
             <div class="overflow-y-auto " style="max-height: 80vh;">
               <ul v-for="positions in finalVotedList" :key="positions['electpositionid']" class="bg-white">
 
-                <div class="p-2 bg-primary text-white">
+                <div class="p-2 bg-primary text-white animate-entry">
                   <h3 class="text-2xl font-semibold ">{{ positions['description'] }}</h3>
                   <!-- <p class="text-center">Select 3 Candidates</p> -->
                 </div>
                 <li v-if="positions['candidates'] && positions['candidates'].length > 0">
 
-                  <div class="p-2 space-y-4 flex justify-between border-b border-gray-300"
+                  <div class="p-2 space-y-4 flex justify-between border-b border-gray-300 animate-entry "
                     v-for="candidates in positions['candidates']" :key="candidates.ecandidateid">
                     <div class="flex-grow ml-4 ">
                       <div class="text-xl font-semibold text-center">{{ candidates.delegates.cooperatives.coopname
@@ -179,7 +172,7 @@
                   </div>
                 </li>
                 <li v-else>
-                  <div class="p-6 ">
+                  <div class="p-6 animate-entry">
                     <p class="text-2xl">No candidate/s selected</p>
                   </div>
                 </li>
@@ -682,6 +675,10 @@ export default {
   height: 40px;
   animation: spin 1s linear infinite;
 }
+.animate-entry {
+  animation: slide-in 0.5s ease-out forwards;
+  overflow-y: hidden;
+}
 
 @keyframes spin {
   0% {
@@ -690,6 +687,16 @@ export default {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+@keyframes slide-in {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 </style>
