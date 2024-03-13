@@ -155,9 +155,9 @@ export default {
             qr.click();
         },
         async generateQR() {
-            const config = {
-                headers: { Authorization: `Bearer ${localStorage.TOKEN}` },
-            };
+            // const config = {
+            //     headers: { Authorization: `Bearer ${localStorage.TOKEN}` },
+            // };
             let url = this.baseUrl + `api/generateQR/` + this.ballotCode;
             // this.showLoading();
 
@@ -169,7 +169,7 @@ export default {
 
             }, error => {
                 // loadingController.dismiss();
-
+                console.log(error)
             });
             console.log(this.url)
         },

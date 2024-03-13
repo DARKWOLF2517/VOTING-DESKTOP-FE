@@ -21,8 +21,8 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
       path: "/InputBallotCodeforPrint",
-      name: 'Home',
-      meta: { title: 'Home' } ,
+      name: 'print',
+      meta: { title: 'print' } ,
       component: () => import("../views/inputballotcodeforprint.vue"  as any),
     },
     {
