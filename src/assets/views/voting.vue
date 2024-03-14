@@ -104,7 +104,7 @@
         </svg>
       </button> -->
         <button type="button"
-          class="text-white bg-accent hover:bg-primary mr-4 w-80 md:w-auto md:mr-0 flex justify-center items-center"
+          class="text-white bg-amber-400 hover:bg-primary mr-4 w-80 md:w-auto md:mr-0 flex justify-center items-center"
           @click="  checkSubmission()">
           Submit Ballot
           <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
