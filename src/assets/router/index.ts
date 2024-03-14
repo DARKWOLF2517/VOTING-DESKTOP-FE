@@ -20,6 +20,12 @@ const routes: Array<RouteRecordRaw> = [
       component: () => import("../views/voting.vue"  as any),
     },
     {
+      path: "/printcrosswise",
+      name: 'printcrosswise',
+      meta: { title: 'printcrosswise' } ,
+      component: () => import("../views/printcrosswise.vue"  as any),
+    },
+    {
       path: "/InputBallotCodeforPrint",
       name: 'inputballot',
       meta: { title: 'EnterBallotToPrint' } ,

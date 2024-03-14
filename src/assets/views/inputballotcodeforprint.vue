@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen w-screen">
+    <div class="h-screen">
         <div class="flex justify-center align mt-20">
             <div class="qr-scanner card rounded bg-white shadow">
                 <label for="registrationCode" class="flex text-start mb-0 font-bold text-xl text-primary">Ballot
@@ -34,7 +34,6 @@ export default {
     mounted() {
         console.log('sdf');
         this.startQrReading();
-        
     },
     methods: {
         startQrReading() {
@@ -62,7 +61,7 @@ export default {
             // static url for printing ballot code
             if (isValidBallotCode) {
                 alert(this.ballotCode)
-                window.open('/print?ballotCode=' + this.ballotCode);
+                window.open('http://192.168.4.103:5173/print?ballotCode=' + this.ballotCode);
                 setTimeout(() => {
                     this.scanner.resume();
                 }, 1000);
