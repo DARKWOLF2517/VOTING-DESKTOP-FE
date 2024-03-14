@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen w-screen">
+    <div class="h-screen">
         <div class="flex justify-center align mt-20">
             <div class="qr-scanner card rounded bg-white shadow">
                 <label for="registrationCode" class="flex text-start mb-0 font-bold text-xl text-primary">Ballot
@@ -14,7 +14,6 @@
                         Submit
                     </button>
                 </div>
-
             </div>
         </div>
     </div>
@@ -35,7 +34,6 @@ export default {
     mounted() {
         console.log('sdf');
         this.startQrReading();
-        
     },
     methods: {
         startQrReading() {

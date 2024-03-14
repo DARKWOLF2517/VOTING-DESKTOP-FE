@@ -84,7 +84,7 @@
                     <div class="bg-white rounded-lg p-6 h-96 shadow-2xl">
                         <h1 class="h1-large mb-2 mt-12 text-primary font-bold">Ballot Code</h1>
                         <p class="text-xl mb-12">Enter ballot code to cast your vote</p>
-                        <label for="registrationCode" class="flex text-start mb-0 font-bold text-xl text-primary">Ballot
+                        <label for="registrationCode" class="flex text-start mb-0 font-bold text-2xl text-primary">Ballot
                             code</label>
                         <input v-model="formData.ballotCode" type="text"
                             class="w-full h-10 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
