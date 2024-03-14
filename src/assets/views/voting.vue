@@ -126,7 +126,14 @@
           <div class="p-6 ">
             <ul class="list-none flex flex-wrap justify-center gap-4">
               <li v-for="positions in electPosition" :key="positions['electpositionid']">
-                <button
+                <button v-if="checkVotedCategory(positions.candidates)"
+                  class="bg-green-400 text-wrap w-96 hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4 animate-entry"
+                  @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])">
+                  <div class="flex items-center justify-center h-40 p-4">
+                    <h2 class="text-2xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
+                  </div>
+                </button>
+                <button v-else
                   class="bg-white text-wrap w-96 hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4 animate-entry"
                   @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])">
                   <div class="flex items-center justify-center h-40 p-4">
@@ -240,13 +247,13 @@
                   </li>
                 </ul>
 
-              </div> 
+              </div>
             </div>
             <!-- Modal footer -->
             <div class="flex items-center justify-end p-4 border-t">
-               <div v-if="totalVoted > voteCategory.no_of_winner" class="text-red-500 flex justify-start">
-              Vote only {{ voteCategory.no_of_winner }} candidate/s.
-            </div>  
+              <div v-if="totalVoted > voteCategory.no_of_winner" class="text-red-500 flex justify-start">
+                Vote only {{ voteCategory.no_of_winner }} candidate/s.
+              </div>
               <button @click="showModal = false, closeCandidateModal()" type="button"
                 class="py-2.5 mr-2 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-accent hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
                 Close
@@ -262,7 +269,7 @@
                 Save
               </button>
             </div>
-           
+
           </div>
         </div>
 
@@ -418,6 +425,18 @@ export default {
 
   },
   methods: {
+    checkVotedCategory(candidates) {
+      console.log(this.FinalvotedCandidates)
+      // let data = {
+      //   0: 1,
+      //   1: 11,
+      //   2: 5
+      // };
+
+      return (candidates.some(candidate => Object.values(this.FinalvotedCandidates).includes(candidate.ecandidateid)));
+
+
+    },
     generateInitials(fullname: string) {
       var names = fullname.split(' ');
       var lastName = names.pop(); // Remove and get the last name
