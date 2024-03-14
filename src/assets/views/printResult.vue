@@ -3,26 +3,26 @@
         <div class="w-72 md:w-96 bg-white border border-gray-300 rounded-lg p-4">
             <div>
                 <div class="ballot-header ">
-                    <p class="flex justify-start"><b>BALLOT CODE:{{ this.$route.query.ballotCode }} </b></p>
-                    <p class=" flex justify-start mb-2"><b>Date Time Printed: {{ date }}</b></p>
+                    <p class="flex justify-start text-xs"><b>BALLOT CODE:{{ this.$route.query.ballotCode }} </b></p>
+                    <p class=" flex justify-start mb-2 text-xs"><b>Date Time Printed: {{ date }}</b></p>
                     <h3 class=" flex justify-start">List of Candidates Voted</h3>
                 </div>
                 <div>
                     <div v-for="positions in finalResults">
                         <ul class="bg-white" v-if="positions['area_no'] == area || positions['area_no'] == 0">
-                            <div class="p-2 bg-gray-600 text-white">
-                                <h3 class="text-lg font-semibold ">Name of Position {{ positions['description'] }}</h3>
+                            <div class="p-2 border-2 border-dashed border-black">
+                                <h3 class="text-m font-semibold ">Name of Position {{ positions['description'] }}</h3>
                                 <!-- <p class="text-center">Select 3 Candidates</p> -->
                             </div>
                             <div v-if="positions.candidates && positions.candidates.length > 0">
                                 <li v-for="candidates in positions.candidates">
                                     <div class="p-2 space-y-4 border-b border-gray-300">
                                         <div class="flex-grow ml-4 ">
-                                            <div class="text-l font-semibold text-center text-wrap"> {{
+                                            <div class="text-sm font-semibold text-center text-wrap"> {{
                         candidates['delegates']['cooperatives']['coopname'] }}
                                             </div>
                                             <p class="text-sm text-center"> Represented by:</p>
-                                            <div class="text-lg font-bold text-center">
+                                            <div class="text-m font-bold text-center">
                                                 {{ candidates['candidate_name'] }}</div>
                                         </div>
                                     </div>
@@ -31,9 +31,9 @@
 
                             </div>
                             <div v-else>
-                                <li >
+                                <li>
                                     <div class="p-6 ">
-                                        <p class="text-xl">No candidate/s selected</p>
+                                        <p class="text-m">No candidate/s selected</p>
                                     </div>
                                 </li>
                             </div>
@@ -42,7 +42,7 @@
                     </div>
 
 
-                    <div class="flex justify-start overflow-x-hidden">
+                    <div class="flex justify-start overflow-x-hidden mt-4">
                         <p>Signature:______________________________</p>
                     </div>
                 </div>
@@ -74,8 +74,9 @@ export default {
         this.fetchData();
 
         //get date
+        const options = {year:"numeric", month:"long", day: "numeric", hour:"numeric", minute:"numeric", second:"numeric"}
         const now = new Date();
-        const formattedDateTime = now.toLocaleString(); // You can use other formatting methods as well
+        const formattedDateTime = now.toLocaleString("en-US", options as any); // You can use other formatting methods as well
         this.date = formattedDateTime;
     },
     methods: {
