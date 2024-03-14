@@ -240,11 +240,13 @@
                   </li>
                 </ul>
 
-              </div>
+              </div> 
             </div>
             <!-- Modal footer -->
             <div class="flex items-center justify-end p-4 border-t">
-
+               <div v-if="totalVoted > voteCategory.no_of_winner" class="text-red-500 flex justify-start">
+              Vote only {{ voteCategory.no_of_winner }} candidate/s.
+            </div>  
               <button @click="showModal = false, closeCandidateModal()" type="button"
                 class="py-2.5 mr-2 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-accent hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
                 Close
@@ -259,8 +261,8 @@
                 class="text-white bg-gray-300 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                 Save
               </button>
-
             </div>
+           
           </div>
         </div>
 
@@ -673,6 +675,7 @@ export default {
   height: 40px;
   animation: spin 1s linear infinite;
 }
+
 .animate-entry {
   animation: slide-in 0.5s ease-out forwards;
   overflow-y: hidden;
@@ -687,11 +690,13 @@ export default {
     transform: rotate(360deg);
   }
 }
+
 @keyframes slide-in {
   0% {
     transform: translateY(50px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
