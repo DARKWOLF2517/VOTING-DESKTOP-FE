@@ -127,9 +127,13 @@
             <ul class="list-none flex flex-wrap justify-center gap-4">
               <li v-for="positions in electPosition" :key="positions['electpositionid']">
                 <button v-if="checkVotedCategory(positions.candidates)"
-                  class="bg-green-400 text-wrap w-96 hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4 animate-entry"
+                  class="bg-white text-wrap w-96 hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4 animate-entry"
                   @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])">
                   <div class="flex items-center justify-center h-40 p-4">
+                  
+<p class="flex justify-center">  <svg class="w-16 h-16 text-green-600 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd"/>
+</svg> </p>
                     <h2 class="text-2xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
                   </div>
                 </button>
