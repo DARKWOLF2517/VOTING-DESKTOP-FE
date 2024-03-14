@@ -62,11 +62,11 @@ export default {
 
             // static url for printing ballot code
             if (isValidBallotCode) {
-                alert(this.ballotCode)
+                // alert(this.ballotCode)
                 window.open('/print?ballotCode=' + this.ballotCode);
                 setTimeout(() => {
                     this.scanner.resume();
-                }, 1000);
+                }, 8000);
             }
             else {
                 alert('Invalid Qr Code')
