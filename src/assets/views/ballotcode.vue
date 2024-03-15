@@ -79,18 +79,19 @@
                 <div class=" image-bg image-animate">
                     <img class=" w-full bg-cover" src="/src/assets/images/ballot-code.png" alt="alternative">
                 </div>
-                <div class="mb-16 lg:mt-32 xl:mt-20 xl:mr-12 px-10 card-animate">
-                    <div class="bg-white rounded-lg p-6 h-96 shadow-2xl">
-                        <h1 class="h1-large mb-2 mt-12 text-primary font-bold">Ballot Code</h1>
-                        <p class="text-xl mb-12">Enter ballot code to cast your vote</p>
+                <div class="mb-16 lg:mt-32 xl:mt-12 xl:mr-12 px-10 card-animate">
+                    <div class="bg-white rounded-lg p-6 shadow-2xl">
+                        <h1 class="h1-large mb-2  text-primary font-bold">Ballot Code</h1>
+                        <p class="text-xl ">Scan or Enter ballot code to cast your vote</p>
                         <!-- <label for="registrationCode"
                             class="flex text-start mb-0 font-bold text-2xl text-primary">Ballot
                             code</label> -->
-                        <div id="reader" ref="reader"></div>
+                        <div id="reader" ref="reader" class="mb-2"></div>
+                        <h2 class="fon-bold flex justify-center">OR</h2>
                         <input v-model="formData.ballotCode" type="text"
-                            class="w-full h-10 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
+                            class="w-full h-10 mt-2 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
                             placeholder="Enter Ballot Code...">
-                        <div class="mt-4 flex justify-end">
+                        <div class="mt-2 flex justify-end">
                             <button @click.prevent="checkBallotCode" type="button"
                                 class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
                                 Start Voting
@@ -201,6 +202,13 @@ export default {
 
 .fade-in-left {
     animation: fadeInLeftAnimation 1s ease-in-out forwards;
+}
+#html5-qrcode-button-camera-start {
+    background-color: green !important;
+    border: 2px solid;
+}
+#html5-qrcode-button-camera-stop {
+    background-color: red !important;
 }
 
 @keyframes fadeInAnimation {
