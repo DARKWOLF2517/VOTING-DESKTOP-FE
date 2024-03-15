@@ -26,7 +26,7 @@
                         </thead>
                         <tbody>
                             <tr class="border border-black px-4 py-2" v-for="results in result">
-                                <td class="text-xs">{{ results['candidates']['position']['description'] }}</td>
+                                <td class="text-xs">{{ results['candidates']['electpositions']['description'] }}</td>
                                 <td class="text-xs">{{ results['candidates']['delegates']['cooperatives']['coopname'] }}
                                 </td>
                                 <td class="text-xs">{{ results['candidates']['candidate_name'] }}</td>
@@ -77,7 +77,7 @@ export default {
         async fetchData() {
             try {
                 const getData = await axios.get(this.baseUrl + 'api/fetchVoteResult/' + this.$route.query.ballotCode,);
-                console.log(getData.data.electPosition);
+                console.log(getData.data);
                 this.result = getData.data.voteData;
                 this.electionDetails = getData.data.electPosition;
             } catch (error) {

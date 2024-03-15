@@ -67,7 +67,7 @@ export default {
             // static url for printing ballot code
             if (isValidBallotCode) {
                 // alert(this.ballotCode)
-                window.open('/print?ballotCode=' + this.ballotCode);
+                window.open('/printcrosswise?ballotCode=' + this.ballotCode);
                 setTimeout(() => {
                     this.scanner.resume();
                 }, 8000);
