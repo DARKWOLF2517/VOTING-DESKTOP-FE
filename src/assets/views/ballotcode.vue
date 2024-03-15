@@ -81,13 +81,16 @@
                 </div>
                 <div class="mb-16 lg:mt-32 xl:mt-12 xl:mr-12 px-10 card-animate">
                     <div class="bg-white rounded-lg p-6 shadow-2xl">
-                        <h1 class="h1-large mb-2  text-primary font-bold">Ballot Code</h1>
-                        <p class="text-xl ">Scan or Enter ballot code to cast your vote</p>
-                        <!-- <label for="registrationCode"
-                            class="flex text-start mb-0 font-bold text-2xl text-primary">Ballot
-                            code</label> -->
+                        <h1 class="h1-large   text-primary font-bold">Ballot Code</h1>
+                        <p class="text-xl mb-4">Scan or Enter ballot code to cast your vote</p>
+                        <label for="registrationCode"
+                            class="flex text-start mb-0 font-bold text-2xl text-primary">Scan QR
+                            code</label>
                         <div id="reader" ref="reader" class="mb-2"></div>
-                        <h2 class="fon-bold flex justify-center">OR</h2>
+                        <p class="font-bold flex justify-center text-2xl">OR</p>
+                          <label for="registrationCode"
+                            class="flex text-start mb-0 font-bold text-2xl text-primary">Ballot
+                            code</label>
                         <input v-model="formData.ballotCode" type="text"
                             class="w-full h-10 mt-2 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
                             placeholder="Enter Ballot Code...">
@@ -203,6 +206,7 @@ export default {
 .fade-in-left {
     animation: fadeInLeftAnimation 1s ease-in-out forwards;
 }
+
 #html5-qrcode-button-camera-start {
     background-color: green !important;
     border: 2px solid;
