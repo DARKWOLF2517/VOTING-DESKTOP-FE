@@ -25,10 +25,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="results in result">
-                                <td>{{ results['candidates']['position']['description'] }}</td>
-                                <td>{{ results['candidates']['delegates']['cooperatives']['coopname'] }}</td>
-                                <td>{{ results['candidates']['candidate_name'] }}</td>
+                            <tr class="border border-black px-4 py-2 " v-for="results in result">
+                                <td class="text-sm">{{ results['candidates']['position']['description'] }}</td>
+                                <td class="text-sm">{{ results['candidates']['delegates']['cooperatives']['coopname'] }}
+                                </td>
+                                <td class="text-sm">{{ results['candidates']['candidate_name'] }}</td>
                             </tr>
 
 
