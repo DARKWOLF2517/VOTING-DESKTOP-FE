@@ -145,7 +145,7 @@ export default {
     },
     methods: {
         async print() {
-            window.location.href = '/print?ballotCode=' + this.ballotCode;
+            window.location.href = '/printcrosswise?ballotCode=' + this.ballotCode;
             // try {
             //     const getDataPrint = await this.axios.get(this.baseUrl + 'api/fetchVoteResult/' + this.ballotCode);
             //     console.log(getDataPrint.data);
