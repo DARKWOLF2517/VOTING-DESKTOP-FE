@@ -1,14 +1,13 @@
 <template>
     <div class="h-screen w-screen">
-         <!-- Navigation Bar -->
-   <nav class="bg-primary p-2 w-screen">
-      <div class="container">
-        <div class="flex justify-start ">
-            <img src="../images/climbs-logo.jpg" alt="CLIMBS Logo"
-            class="w-10 h-10 ">
-        </div>
-      </div>
-    </nav>
+        <!-- Navigation Bar -->
+        <nav class="bg-primary p-2 w-screen">
+            <div class="container">
+                <div class="flex justify-start ">
+                    <img src="../images/climbs-logo.jpg" alt="CLIMBS Logo" class="w-10 h-10 ">
+                </div>
+            </div>
+        </nav>
 
         <div class="stepper flex justify-center mt-4">
             <!-- Stepper -->
@@ -84,11 +83,13 @@
                     <div class="bg-white rounded-lg p-6 h-96 shadow-2xl">
                         <h1 class="h1-large mb-2 mt-12 text-primary font-bold">Ballot Code</h1>
                         <p class="text-xl mb-12">Enter ballot code to cast your vote</p>
-                        <label for="registrationCode" class="flex text-start mb-0 font-bold text-2xl text-primary">Ballot
-                            code</label>
+                        <!-- <label for="registrationCode"
+                            class="flex text-start mb-0 font-bold text-2xl text-primary">Ballot
+                            code</label> -->
+                        <div id="reader" ref="reader"></div>
                         <input v-model="formData.ballotCode" type="text"
                             class="w-full h-10 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
-                            placeholder="Enter code...">
+                            placeholder="Enter Ballot Code...">
                         <div class="mt-4 flex justify-end">
                             <button @click.prevent="checkBallotCode" type="button"
                                 class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
@@ -112,6 +113,7 @@
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 import axios from "axios";
+import { Html5QrcodeScanner } from "html5-qrcode";
 export default {
     data() {
         return {
@@ -125,9 +127,32 @@ export default {
         document.querySelector('.image-animate').classList.add('fade-in');
         // if (!sessionStorage.getItem("delegateid")) {
         //     window.location.href = '/';
+        this.startQrReading();  
         // }
     },
     methods: {
+        startQrReading() {
+            this.scanner = new Html5QrcodeScanner('reader', {
+                // Scanner will be initialized in DOM inside element with id of 'reader'
+                qrbox: {
+                    width: 250,
+                    height: 250,
+                },  // Sets dimensions of scanning box (set relative to reader element width)
+                fps: 20, // Frames per second to attempt a scan
+            });
+            this.scanner.render(this.success, this.error);
+            // Starts scanner
+        },
+        success(result) {
+            this.scanner.pause();
+            this.formData.ballotCode = result;
+            this.checkBallotCode();
+        },
+
+        error(err) {
+            // console.error(err);
+            // Prints any errors to the console
+        },
         async checkBallotCode() {
             try {
 

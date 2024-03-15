@@ -1,41 +1,41 @@
 <template>
-    <div class="h-[1248px] w-[816px]">
-        <div class="p-8 h-full">
-            <p class="flex justify-start font-bold"> {{ this.electionDetails.election_name }}</p>
+    <div class="h-[1248px] w-[816px] mt-0">
+        <div class="p-4 h-full w-full">
+            <p class="flex justify-start font-bold text-sm"> {{ this.electionDetails.election_name }}</p>
             <div class="ballot-header border-2 border-black  p-2">
                 <div class="flex justify-start gap-2">
-                    <p class="flex justify-start"><b>BALLOT CODE: </b> </p>
+                    <p class="flex justify-start text-sm"><b>BALLOT CODE: </b> </p>
                     <p>{{ this.$route.query.ballotCode }}</p>
                 </div>
                 <div class="flex justify-start gap-2">
-                    <p class="flex justify-start"><b>Date Time Printed: </b> </p>
+                    <p class="flex justify-start text-sm"><b>Date Time Printed: </b> </p>
                     <p> {{ this.date }}</p>
                 </div>
 
             </div>
-            <h3 class=" flex justify-start mt-2 font-bold">List of Candidates Voted</h3>
+            <h3 class=" flex justify-start mt-2 font-bold text-sm">List of Candidates Voted</h3>
             <div>
                 <div>
                     <table class="table-auto w-full">
                         <thead>
-                            <tr>
-                                <th class="border border-black px-4 py-2 ">POSITION</th>
-                                <th class="border border-black px-4 py-2">COOPERATIVE NAME</th>
-                                <th class="border border-black px-4 py-2">REPRESENTED BY</th>
+                            <tr class="border border-black px-4 py-2 text-sm ">
+                                <th>POSITION</th>
+                                <th>COOPERATIVE NAME</th>
+                                <th>REPRESENTED BY</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="border border-black px-4 py-2 " v-for="results in result">
-                                <td class="text-sm">{{ results['candidates']['position']['description'] }}</td>
-                                <td class="text-sm">{{ results['candidates']['delegates']['cooperatives']['coopname'] }}
+                            <tr class="border border-black px-4 py-2" v-for="results in result">
+                                <td class="text-xs">{{ results['candidates']['position']['description'] }}</td>
+                                <td class="text-xs">{{ results['candidates']['delegates']['cooperatives']['coopname'] }}
                                 </td>
-                                <td class="text-sm">{{ results['candidates']['candidate_name'] }}</td>
+                                <td class="text-xs">{{ results['candidates']['candidate_name'] }}</td>
                             </tr>
 
 
                         </tbody>
                     </table>
-                    <p class="font-bold mt-4">
+                    <p class="font-bold text-xs">
                         ***************Nothing Follows***************
                     </p>
                     <div class="flex justify-start overflow-x-hidden mt-6">

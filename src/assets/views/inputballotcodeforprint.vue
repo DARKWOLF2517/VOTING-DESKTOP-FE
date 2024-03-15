@@ -49,11 +49,17 @@ export default {
             // Starts scanner
         },
         success(result) {
+            this.scanner.pause();
             this.ballotCode = result;
             this.submitForm();
         },
+
+        error(err) {
+            // console.error(err);
+            // Prints any errors to the console
+        },
         async submitForm() {
-            this.scanner.pause();
+            
             const response = await axios.post(this.baseUrl + 'api/check', { ballotCode: this.ballotCode });
             console.log(response.data)
             const isValidBallotCode = response.data.error === 'Ballot has already been used';
@@ -70,10 +76,6 @@ export default {
                 alert('Invalid Qr Code')
                 this.scanner.resume();
             }
-        },
-        error(err) {
-            // console.error(err);
-            // Prints any errors to the console
         },
     }
 }
