@@ -83,9 +83,9 @@ export default {
             } catch (error) {
                 console.log(error);
             }
-            // setTimeout(() => {
-            //     window.print();
-            // }, 1000)
+            setTimeout(() => {
+                window.print();
+            }, 1000)
 
         },
     },
