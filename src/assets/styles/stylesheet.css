@@ -74,7 +74,9 @@
   animation: slide-in 0.5s ease-out forwards;
   overflow-y: hidden;
 }
-
+.other-device{
+    display: none;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -232,7 +234,7 @@
         text-align: left;
     }
     .text-2xl {
-        font-size: 1.2rem;
+        font-size: 1.rem;
     }
     .h1-large {
         font-size: 1.6rem;
@@ -268,6 +270,33 @@
     .bg-primary {
         background-color: #3b82f6;
     }
+    .other-device{
+        display: block;
+        margin-left: 10px;
+    }
+    #vote-buttons{
+        width: 150px;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .category-list{
+        width: 100% !important;
+        margin-left: 10px;
+    }
+    .category-title{
+        font-size: 20px !important;
+    }
+    .category-button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        height: 100px;
+    }
+    .view-sum{
+        display: none;
+    }
+
 }
 
 

@@ -76,7 +76,7 @@
         </div>
         <div class="flex justify-start ml-4">
             <router-link to="/" tag="button"
-                class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center rounded p-4">
+                class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center rounded rounded-xl p-4">
                 <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 8 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -87,13 +87,13 @@
         </div>
         <h1 class="h1-large  text-primary font-bold">Vote Submitted </h1>
         <p class="text-lg ">Thank you for Voting!</p>
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center image">
             <div class="container px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
-                <div class=" image-bg image-animate">
+                <div class=" image-bg image-animate  image-container">
                     <img class=" w-full bg-cover" src="/src/assets/images/welcome-bg.png" alt="alternative">
                 </div>
 
-                <div class="mb-16 lg:mt-32 xl:mt-10 xl:mr-12 px-10 card-animate">
+                <div class=" mt-4 flex justify-center items-center content-section card-animate ">
                     <div class="bg-white rounded-lg p-6 h-full shadow-2xl">
                         <div class="flex justify-center mt-2">
                             <img :src="url" alt="" class="h-80">

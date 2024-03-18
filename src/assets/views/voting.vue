@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen w-screen">
+  <div class="min-h-screen h-screen w-screen">
     <div class="loading-overlay" v-if="isLoading">
       <div class="loading-spinner"></div>
     </div>
@@ -81,10 +81,10 @@
     <p class="p-large ">Select Candidate of choice</p>
     <div class="flex justify-between ">
       <div class="flex justify-start ml-4">
-        <router-link to="/" tag="button"
-          class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center rounded p-4">
-          <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 8 14">
+        <router-link to="/" tag="button" id="vote-buttons"
+          class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center rounded rounded-xl p-4">
+          <svg class="w-4 h-4 text-gray-800 dark:text-white flex justify-start" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13" />
           </svg>
@@ -92,20 +92,11 @@
         </router-link>
       </div>
 
-      <div class="flex justify-end mr-4 px-4">
-        <!-- <button type="button"
-        class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center"
-        @click="getCandidatesResult(), showSummaryModal = true;">
-        View Summary
-        <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-          fill="none" viewBox="0 0 8 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1" />
-        </svg>
-      </button> -->
+      <div class="flex justify-end mr-4 px-4 ">
+
         <button type="button"
-          class="text-white bg-amber-400 hover:bg-primary mr-4 w-80 md:w-auto md:mr-0 flex justify-center items-center"
-          @click="  checkSubmission()">
+          class="text-white bg-amber-400 hover:bg-primary mr-4 w-80 rounded-xl md:w-auto md:mr-0 flex justify-center items-center"
+          @click="  checkSubmission()" id="vote-buttons">
           Submit Ballot
           <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 8 14">
@@ -123,43 +114,58 @@
       <div class="row flex justify-between gap-4 p-4">
         <div class="col flex-1">
           <!-- Category Buttons -->
-          <div class="p-0 ">
+          <div class="p-0 category-list">
             <ul class="list-none flex flex-wrap justify-center gap-2">
               <li v-for="positions in electPosition" :key="positions['electpositionid']">
                 <button v-if="checkVotedCategory(positions.candidates)"
-                  class="bg-white text-wrap hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4 animate-entry w-80 "
+                  class="category-button bg-white text-wrap hover:bg-primary  hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4 animate-entry w-80 "
                   @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])">
                   <div class="flex items-center justify-center h-40 p-4">
-                  
-<p class="flex justify-center">  <svg class="w-10 h-10 text-green-600 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-  <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd"/>
-</svg> </p>
-                    <h2 class="text-2xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
+
+                    <p class="flex justify-center gap-2 "> <svg class="w-10 h-10 text-green-600 " aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                          d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z"
+                          clip-rule="evenodd" />
+                      </svg> </p>
+                    <h2 class="text-2xl font-bold mb-2 text-center category-title">{{ positions['description'] }}</h2>
                   </div>
                 </button>
                 <button v-else
-                  class="bg-white text-wrap hover:bg-primary hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4 animate-entry w-80"
+                  class="category-button bg-white text-wrap hover:bg-primary  hover:text-white rounded-lg overflow-hidden shadow-lg focus:outline-none mb-4 animate-entry w-80"
                   @click="showModal = true, openCandidatesModal(positions['electpositionid'], positions['area_no'], positions['no_winner'], positions['description'])">
                   <div class="flex items-center justify-center h-40 p-4">
-                    <h2 class="text-2xl font-bold mb-2 text-center">{{ positions['description'] }}</h2>
+                    <h2 class="text-2xl font-bold mb-2 text-center category-title">{{ positions['description'] }}</h2>
                   </div>
                 </button>
               </li>
             </ul>
+            <div class="other-device">
+          <button type="button"
+            class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center"
+            @click="getCandidatesResult(), showSummaryModal = true;">
+            View Summary
+            <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 8 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1" />
+            </svg>
+          </button>
           </div>
+          
         </div>
+        </div>
+      
         <div class="col flex-1">
-          <div class="p-4 space-y-4">
-
+          <div class="p-4 space-y-4 view-sum">
             <div class="overflow-y-auto " style="max-height: 80vh;">
               <ul v-for="positions in finalVotedList" :key="positions['electpositionid']" class="bg-white">
-
                 <div class="p-2 bg-primary text-white animate-entry">
                   <h3 class="text-2xl font-semibold ">{{ positions['description'] }}</h3>
                   <!-- <p class="text-center">Select 3 Candidates</p> -->
                 </div>
                 <li v-if="positions['candidates'] && positions['candidates'].length > 0">
-
                   <div class="p-2 space-y-4 flex justify-between border-b border-gray-300 animate-entry "
                     v-for="candidates in positions['candidates']" :key="candidates.ecandidateid">
                     <div class="flex-grow ml-4 ">
@@ -250,7 +256,6 @@
                     </label>
                   </li>
                 </ul>
-
               </div>
             </div>
             <!-- Modal footer -->
@@ -273,10 +278,8 @@
                 Save
               </button>
             </div>
-
           </div>
         </div>
-
       </div>
     </transition>
   </div>
@@ -285,7 +288,6 @@
     <transition name="modal-fade">
       <div v-if="showSummaryModal" id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
         class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
-
         <div class="bg-white rounded-lg overflow-hidden shadow-lg w-full max-w-2xl">
           <div class="p-4">
             <!-- Modal header -->
@@ -315,11 +317,11 @@
                     <div class="p-2 space-y-4" v-for="candidates in positions['candidates']"
                       :key="candidates.ecandidateid">
                       <div class="flex-grow ml-4">
-                        <div class="text-lg font-semibold text-center">{{ candidates.delegates.cooperatives.coopname
+                        <div class="text-l  text-center">{{ candidates.delegates.cooperatives.coopname
                           }}
                         </div>
                         <p class="text-sm text-center"> Represented by:</p>
-                        <div class="text-lgfont-bold text-center">{{ candidates.candidate_name }}</div>
+                        <div class="text-lg font-bold text-center">{{ candidates.candidate_name }}</div>
                       </div>
                     </div>
                     <hr>
@@ -451,7 +453,7 @@ export default {
 
     //to get all elect position
     async fetchElectPosition() {
-      this.isLoading = false;
+
       try {
         const getElectPOsition = await axios.get(this.baseUrl + 'api/getElectPosition');
         this.electPosition = getElectPOsition.data.electpositions;
@@ -463,7 +465,7 @@ export default {
           data.candidates.forEach(candidates => {
 
             this.candidates.push(candidates);
-
+            this.isLoading = false;
           })
 
         });
@@ -651,5 +653,3 @@ export default {
 
 }
 </script>
-
-
