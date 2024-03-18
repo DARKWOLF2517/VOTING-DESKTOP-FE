@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen w-screen">
+    <div class="min-h-screen h-screen w-screen">
         <!-- Navigation Bar -->
         <nav class="bg-primary p-2 w-screen">
             <div class="container">
@@ -8,7 +8,7 @@
                 </div>
             </div>
         </nav>
-
+<div class="content">
         <div class="stepper flex justify-center mt-4">
             <!-- Stepper -->
             <ul class="relative flex flex-col md:flex-row gap-2">
@@ -74,21 +74,23 @@
             </ul>
             <!-- End Stepper -->
         </div>
-        <div class="flex justify-center items-center">
-            <div class="container px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
+        <div class="flex justify-center items-center content-section">
+            <div class="container sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
                 <div class=" image-bg image-animate">
-                    <img class=" w-full bg-cover" src="/src/assets/images/ballot-code.png" alt="alternative">
+                    <div class="image-container">
+                        <img class=" w-full bg-cover" src="/src/assets/images/ballot-code.png" alt="alternative">
+                    </div>
                 </div>
-                <div class="mb-16 lg:mt-32 xl:mt-12 xl:mr-12 px-10 card-animate">
+                <div class="mb-16  xl:mr-12 px-10 card-animate card">
                     <div class="bg-white rounded-lg p-6 shadow-2xl">
-                        <h1 class="h1-large   text-primary font-bold">Ballot Code</h1>
+                        <h1 class="h1-large text-primary font-bold">Ballot Code</h1>
                         <p class="text-xl mb-4">Scan or Enter ballot code to cast your vote</p>
-                        <label for="registrationCode"
-                            class="flex text-start mb-0 font-bold text-2xl text-primary">Scan QR
+                        <label for="registrationCode" class="flex text-start mb-0 font-bold text-2xl text-primary">Scan
+                            QR
                             code</label>
                         <div id="reader" ref="reader" class="mb-2"></div>
                         <p class="font-bold flex justify-center text-2xl">OR</p>
-                          <label for="registrationCode"
+                        <label for="registrationCode"
                             class="flex text-start mb-0 font-bold text-2xl text-primary">Ballot
                             code</label>
                         <input v-model="formData.ballotCode" type="text"
@@ -110,7 +112,7 @@
             </div>
         </div>
     </div>
-
+</div>
 </template>
 
 <script lang="ts">
@@ -131,7 +133,7 @@ export default {
         document.querySelector('.image-animate').classList.add('fade-in');
         // if (!sessionStorage.getItem("delegateid")) {
         //     window.location.href = '/';
-        this.startQrReading();  
+        this.startQrReading();
         // }
     },
     methods: {
@@ -198,42 +200,3 @@ export default {
 </script>
 
 
-<style scoped>
-.fade-in {
-    animation: fadeInAnimation 1s ease-in-out forwards;
-}
-
-.fade-in-left {
-    animation: fadeInLeftAnimation 1s ease-in-out forwards;
-}
-
-#html5-qrcode-button-camera-start {
-    background-color: green !important;
-    border: 2px solid;
-}
-#html5-qrcode-button-camera-stop {
-    background-color: red !important;
-}
-
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInLeftAnimation {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-</style>
