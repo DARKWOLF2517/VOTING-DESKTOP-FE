@@ -235,7 +235,7 @@
                             class="w-8 mr-3 h-8 text-white bg-white border-gray-300 rounded focus:ring-blue-500">
 
                           <div>
-                            <img :src="candidate.path" class="rounded w-20 h-20" alt="candidate-coop">
+                            <img :src="candidate.path" class="rounded w-20 h-20" alt="candidate-profile">
                             <!-- <div id="profileImage">{{ generateInitials(candidate['candidate_name']) }}</div> -->
                           </div>
                           <div class="flex-grow ml-4">
