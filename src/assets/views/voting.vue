@@ -224,31 +224,32 @@
               </button>
             </div>
             <!-- Modal body -->
-            <div class="p-4 space-y-4">
-              <div class="p-2 bg-primary text-white">
+            <div class="p-2 bg-primary text-white">
                 <h3 class="text-2xl font-semibold ">{{ voteCategory.description }}</h3>
                 <p class="text-center">Select {{ voteCategory.no_of_winner }} Candidates</p>
               </div>
-              <div class="px-2 overflow-y-auto " style="max-height: 50vh; overflow-y: auto;">
+            <div class="p-4 space-y-4">
+          
+              <div class=" overflow-y-auto " style="max-height: 50vh; overflow-y: auto;">
                 <ul>
                   <li v-for="candidate in temporaryCandidates" :key="candidate['ecandidateid']">
                     <label :for="candidate.ecandidateid" class="cursor-pointer">
                       <div class="p-2 space-y-4">
-                        <div class="flex items-center w-full p-5 bg-gray-100 rounded-lg shadow-md">
+                        <div class="flex items-center w-full p-4 bg-gray-100 rounded-lg shadow-md">
                           <input :id="candidate.ecandidateid" type="checkbox"
                             :checked="isCandidateVoted(candidate['ecandidateid'])" @change="selectCandidates($event)"
                             name="bordered-checkbox"
                             class="w-8 mr-3 h-8 text-white bg-white border-gray-300 rounded focus:ring-blue-500">
 
-                          <div>
-                            <img :src="candidate.path" class="rounded w-20 h-20" alt="candidate-profile">
+                          <div class="candidate-img">
+                            <img :src="candidate.path" class="rounded w-20 h-20 max-h-20 max-w-20" alt="candidate-profile">
                             <!-- <div id="profileImage">{{ generateInitials(candidate['candidate_name']) }}</div> -->
                           </div>
                           <div class="flex-grow ml-4">
-                            <div class="text-wrap font-semibold text-start">
+                            <div class="text-wrap text-sm font-semibold text-start">
                               {{ candidate['delegates']['cooperatives']['coopname'] }}e</div>
-                            <p class="text-sm text-start"> Represented by:</p>
-                            <div class="text-2xl font-bold text-start text-primary">{{ candidate['candidate_name'] }}
+                            <p class="text-xs text-start"> Represented by:</p>
+                            <div class="text-lg font-bold text-start text-primary">{{ candidate['candidate_name'] }}
                             </div>
                           </div>
                         </div>

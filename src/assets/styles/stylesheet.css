@@ -296,6 +296,10 @@
     .view-sum{
         display: none;
     }
+    .candidate-img{
+        width: 100px;
+        height: 100px;
+    }
 
 }
 
