@@ -101,15 +101,17 @@
                                 class="w-full h-10 mt-2 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
                                 placeholder="Enter Ballot Code...">
                             <div class="mt-2 flex justify-end">
-                                <button @click.prevent="checkBallotCode" type="button"
-                                    class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
-                                    Start Voting
-                                    <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1" />
-                                    </svg>
-                                </button>
+                                <div class="start-btn">
+                                    <button @click.prevent="checkBallotCode" type="button"
+                                        class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center ">
+                                        Start Voting
+                                        <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

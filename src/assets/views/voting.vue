@@ -83,7 +83,7 @@
       <div class="flex justify-start ml-4">
         <router-link to="/" tag="button" id="vote-buttons"
           class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center rounded rounded-xl p-4">
-          <svg class="w-4 h-4 text-gray-800 dark:text-white flex justify-start" aria-hidden="true"
+          <svg class="w-4 h-4 text-white dark:text-white flex justify-start" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13" />
@@ -98,7 +98,7 @@
           class="text-white bg-amber-400 hover:bg-primary mr-4 w-80 rounded-xl md:w-auto md:mr-0 flex justify-center items-center"
           @click="  checkSubmission()" id="vote-buttons">
           Submit Ballot
-          <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 8 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1" />
@@ -146,7 +146,7 @@
             class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center"
             @click="getCandidatesResult(), showSummaryModal = true;">
             View Summary
-            <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
               fill="none" viewBox="0 0 8 14">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1" />
