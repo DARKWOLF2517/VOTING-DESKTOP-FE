@@ -189,7 +189,7 @@ export default {
 </script>
 
 
-<style scoped>
+<!-- <style scoped>
 .fade-in {
     animation: fadeInAnimation 1s ease-in-out forwards;
 }
@@ -219,4 +219,4 @@ export default {
         transform: translateX(0);
     }
 }
-</style>
+</style> -->
