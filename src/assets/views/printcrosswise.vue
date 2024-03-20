@@ -1,5 +1,8 @@
 <template>
     <div class="h-[1248px] w-[816px] mt-0">
+        <div class="loading-overlay" v-if="isLoading">
+            <div class="loading-spinner"></div>
+        </div>
         <div class="p-4 h-full w-full">
             <p class="flex justify-start font-bold text-sm"> {{ this.electionDetails.election_name }}</p>
             <div class="ballot-header border-2 border-black  p-2">
@@ -60,6 +63,7 @@ export default {
             result: [],
             electionDetails: [],
             date: '',
+            isLoading: true,
         }
     },
     mounted() {
@@ -78,8 +82,10 @@ export default {
             try {
                 const getData = await axios.get(this.baseUrl + 'api/fetchVoteResult/' + this.$route.query.ballotCode,);
                 console.log(getData.data);
+                this.isLoading = false,
                 this.result = getData.data.voteData;
                 this.electionDetails = getData.data.electPosition;
+
             } catch (error) {
                 console.log(error);
             }
