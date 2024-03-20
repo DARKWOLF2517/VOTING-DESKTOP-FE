@@ -74,6 +74,9 @@
             </ul>
             <!-- End Stepper -->
         </div>
+       
+        <h1 class="h1-large  text-primary font-bold">Vote Submitted </h1>
+        <p class="text-lg mb-2">Thank you for Voting!</p>
         <div class="flex justify-start ml-4">
             <router-link to="/" tag="button"
                 class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center rounded rounded-xl p-4">
@@ -85,8 +88,6 @@
                 Exit Voting
             </router-link>
         </div>
-        <h1 class="h1-large  text-primary font-bold">Vote Submitted </h1>
-        <p class="text-lg ">Thank you for Voting!</p>
         <div class="flex justify-center items-center image">
             <div class="container px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
                 <div class=" image-bg image-animate  image-container">
