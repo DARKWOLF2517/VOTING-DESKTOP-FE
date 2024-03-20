@@ -100,10 +100,10 @@
                             <input v-model="formData.ballotCode" type="text"
                                 class="w-full h-10 mt-2 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
                                 placeholder="Enter Ballot Code...">
-                            <div class="mt-2 flex justify-end">
-                                <div class="start-btn">
+                            <div class="mt-2">
+                                <div class="start-btn flex justify-end">
                                     <button @click.prevent="checkBallotCode" type="button"
-                                        class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center ">
+                                        class="text-white bg-primary hover:bg-accent w-full md:w-auto md:mr-0 flex justify-center items-center ">
                                         Start Voting
                                         <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">

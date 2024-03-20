@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen w-screen">
+    <div class="min-h-screen h-screen w-screen">
         <!-- Navigation Bar -->
         <nav class="bg-primary p-2 w-screen">
             <div class="container">
@@ -77,7 +77,7 @@
         <div class="flex justify-start ml-4">
             <router-link to="/" tag="button"
                 class="text-white bg-primary hover:bg-accent mr-4 md:w-auto md:mr-0 flex justify-center items-center rounded rounded-xl p-4">
-                <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 8 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13" />
@@ -98,7 +98,6 @@
                         <div class="flex justify-center mt-2">
                             <img :src="url" alt="" class="h-80">
                         </div>
-
                         <p class="text-3xl mb-2 mt-2 text-primary font-bold">Secure QR Code</p>
                         <p class="p-large mb-6  text-xl">Please secure a copy of your QR code for printing. Thank
                             you for Voting!</p>
@@ -108,9 +107,9 @@
                                 Download QR Code
                             </button>
                         </div>
-                        <div class="flex justify-center mt-2">
+                        <div class="flex justify-center mt-2 ">
                             <button @click="print()" type="button"
-                                class="text-black text-lg bg-accent hover:bg-primary w-96 flex justify-center items-center">
+                                id="print-btn" class="text-black text-lg bg-accent hover:bg-primary w-96 flex justify-center items-center">
                                 Print Result
                             </button>
                         </div>
@@ -187,36 +186,3 @@ export default {
     },
 };
 </script>
-
-
-<!-- <style scoped>
-.fade-in {
-    animation: fadeInAnimation 1s ease-in-out forwards;
-}
-
-.fade-in-left {
-    animation: fadeInLeftAnimation 1s ease-in-out forwards;
-}
-
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInLeftAnimation {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-</style> -->

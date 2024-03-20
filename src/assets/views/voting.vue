@@ -92,7 +92,7 @@
         </router-link>
       </div>
 
-      <div class="flex justify-end mr-4 px-4 ">
+      <div class="flex justify-end mr-4 ">
 
         <button type="button"
           class="text-white bg-amber-400 hover:bg-primary mr-4 w-80 rounded-xl md:w-auto md:mr-0 flex justify-center items-center"
