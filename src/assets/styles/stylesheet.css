@@ -188,7 +188,7 @@
     display: block;
   }
   #print-btn{
-    display: hidden !important;
+    display: none !important;
   }
   /* Show the line within the div */
   .stepper li .md\:flex-1 {
@@ -344,7 +344,7 @@
     width: 100vw;
   }
   #print-btn{
-    display: hidden;
+    display: none;
   }
   /* .content-section{
      flex-direction: row;
