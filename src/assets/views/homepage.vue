@@ -5,7 +5,7 @@
     
         <div class="mb-16 lg:mt-32 xl:mt-20 xl:mr-12 px-10">
           <div
-            class="bg-white rounded p-6 w-96 h-full shadow-2xl card-animate"
+            class="bg-white rounded p-6 w-auto h-auto shadow-2xl card-animate"
           >
             <!-- Logo -->
             <div class="logo flex justify-center p-4">
@@ -20,9 +20,11 @@
             >
             <br/>
             <I class="text-m mb-8 mt-6">
-              Welcome to our voting app! Please select one of the following
-              options:
+              Welcome to our voting app! 
             </I>
+            <br>
+            <i>Please select one of the following
+              options:</i>
             <div class="flex justify-center items-center mt-8 ">
               <button
                 type="button"
