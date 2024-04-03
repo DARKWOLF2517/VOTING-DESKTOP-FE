@@ -2,7 +2,7 @@
     <div class="h-screen w-screen">
         
         <div class="flex justify-center align mt-20">
-            <div class="qr-scanner card rounded bg-white shadow w-96 card-animate">
+            <div class="qr-scanner card rounded bg-white shadow w-auto card-animate">
                 <h1 class="text-3xl flex justify-center mb-3 font-bold  text-primary">Scan QR Code</h1>
                 <p class="mb-3 text-sm">Place QR code on Camera to scan. This will automatically print Result.</p>
                 <div id="reader" ref="reader"></div>
