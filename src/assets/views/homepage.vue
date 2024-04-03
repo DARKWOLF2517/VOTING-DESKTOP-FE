@@ -5,14 +5,14 @@
     
         <div class="mb-16 lg:mt-32 xl:mt-20 xl:mr-12 px-10">
           <div
-            class="bg-white rounded p-6 w-auto h-auto shadow-2xl card-animate"
+            class="bg-white rounded p-6 w-96 h-full shadow-2xl card-animate"
           >
             <!-- Logo -->
             <div class="logo flex justify-center p-4">
               <img
                 src="https://www.climbs.coop/wp-content/uploads/2021/10/climbs-logo.jpg"
                 alt="Sample Image"
-                class="w-20 h-20"
+                class="w-40 h-40"
               />
             </div>
             <hp class="text-3xl mb-2 mt-4 text-primary font-bold"
