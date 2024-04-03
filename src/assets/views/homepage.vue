@@ -19,11 +19,11 @@
               >CLIMBS Elections</hp
             >
             <br/>
-            <I class="text-m mb-8 mt-6">
+            <I class="text-lg mb-8 mt-6">
               Welcome to our voting app! 
             </I>
             <br>
-            <i>Please select one of the following
+            <i class="text-lg">Please select one of the following
               options:</i>
             <div class="flex justify-center items-center mt-8 ">
               <button
