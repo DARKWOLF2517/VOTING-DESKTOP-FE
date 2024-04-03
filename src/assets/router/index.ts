@@ -2,11 +2,12 @@ import { createRouter, createWebHistory } from "vue-router";
 import { RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
-    // {
-    //   path: '/home',
-    //   name: 'Home',
-    //   component: HomePage
-    // },
+    {
+      path: '/',
+      name: 'homepage',
+      meta: { title: 'homepage' } ,
+      component: () => import("../views/homepage.vue"  as any),
+    },
     // {
     //   path: "/helloworld",
     //   name: 'Home',
@@ -50,7 +51,7 @@ const routes: Array<RouteRecordRaw> = [
       component: () => import("../views/userselect.vue" as any) ,
     },
     {
-      path: "/",
+      path: "/BallotCode",
       name: 'Ballot Code',
       meta: { title: 'Home' } ,
       component: () => import("../views/ballotcode.vue"  as any),

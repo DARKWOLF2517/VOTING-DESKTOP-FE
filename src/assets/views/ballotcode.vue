@@ -77,6 +77,12 @@
                 </ul>
                 <!-- End Stepper -->
             </div>
+            <div class="flex justify-start">
+                <button type="button" @click="this.$router.push('/');"
+                        class="text-white ml-3 bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
+                        Back
+                    </button>
+            </div>
             <div class="flex justify-center items-center content-section">
                 <div class="container sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
                     <div class=" image-bg image-animate">

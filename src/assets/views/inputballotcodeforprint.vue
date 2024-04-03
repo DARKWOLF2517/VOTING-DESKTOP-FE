@@ -1,14 +1,20 @@
 <template>
-    <div class="h-screen">
+    <div class="h-screen w-screen">
+        
         <div class="flex justify-center align mt-20">
-            <div class="qr-scanner card rounded bg-white shadow">
-                <label for="registrationCode" class="flex text-start mb-0 font-bold text-xl text-primary">Ballot
-                    code</label>
+            <div class="qr-scanner card rounded bg-white shadow w-96 card-animate">
+                <h1 class="text-3xl flex justify-center mb-3 font-bold  text-primary">Scan QR Code</h1>
+                <p class="mb-3 text-sm">Place QR code on Camera to scan. This will automatically print Result.</p>
                 <div id="reader" ref="reader"></div>
+                <p class="mt-2 text-xl font-bold text-primary">OR</p>
                 <input type="text"
-                    class="w-full mt-6 h-10 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
+                    class="w-full mt-2 h-10 px-4 rounded-lg border focus:outline-none border-blue-200 focus:border-blue-500 bg-gray-100"
                     placeholder="Enter code..." v-model="ballotCode">
-                <div class="flex justify-end mt-4">
+                <div class="flex justify-between mt-4 gap-2">
+                    <button type="button" @click="this.$router.push('/');"
+                        class="text-black bg-secondary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
+                        Back
+                    </button>
                     <button type="button" @click="this.submitForm()"
                         class="text-white bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
                         Submit
@@ -34,6 +40,9 @@ export default {
     mounted() {
         console.log('sdf');
         this.startQrReading();
+        
+    // Add animation class after component is mounted
+    document.querySelector('.card-animate').classList.add('fade-in');
     },
     methods: {
         startQrReading() {
