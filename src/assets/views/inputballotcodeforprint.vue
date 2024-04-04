@@ -1,6 +1,6 @@
 <template>
     <div class="h-screen w-screen">
-        
+
         <div class="flex justify-center align mt-20">
             <div class="qr-scanner card rounded bg-white shadow w-auto card-animate">
                 <h1 class="text-3xl flex justify-center mb-3 font-bold  text-primary">Scan QR Code</h1>
@@ -25,7 +25,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Html5QrcodeScanner } from "html5-qrcode";
 import axios from "axios";
 export default {
@@ -40,9 +40,9 @@ export default {
     mounted() {
         console.log('sdf');
         this.startQrReading();
-        
-    // Add animation class after component is mounted
-    document.querySelector('.card-animate').classList.add('fade-in');
+
+        // Add animation class after component is mounted
+        document.querySelector('.card-animate').classList.add('fade-in');
     },
     methods: {
         startQrReading() {
@@ -53,22 +53,22 @@ export default {
                     height: 250,
                 },  // Sets dimensions of scanning box (set relative to reader element width)
                 fps: 20, // Frames per second to attempt a scan
-            });
+            }, true);
             this.scanner.render(this.success, this.error);
             // Starts scanner
         },
-        success(result) {
+        success(result: any) {
             this.scanner.pause();
             this.ballotCode = result;
             this.submitForm();
         },
 
-        error(err) {
-            // console.error(err);
+        error(err: any) {
+            console.error(err);
             // Prints any errors to the console
         },
         async submitForm() {
-            
+
             const response = await axios.post(this.baseUrl + 'api/check', { ballotCode: this.ballotCode });
             console.log(response.data)
             const isValidBallotCode = response.data.error === 'Ballot has already been used';

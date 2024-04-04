@@ -127,7 +127,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 import axios from "axios";
@@ -158,17 +158,18 @@ export default {
                     height: 250,
                 },  // Sets dimensions of scanning box (set relative to reader element width)
                 fps: 20, // Frames per second to attempt a scan
-            });
+            }, true);
             this.scanner.render(this.success, this.error);
             // Starts scanner
+
         },
-        success(result) {
+        success(result: any) {
             this.scanner.pause();
             this.formData.ballotCode = result;
             this.checkBallotCode();
         },
 
-        error(err) {
+        error(err: any) {
             console.error(err);
             // Prints any errors to the console
         },
@@ -207,7 +208,7 @@ export default {
                 console.log(error);
             }
         },
-        showError(message) {
+        showError(message: any) {
             toast.error(message), {
                 autoClose: 100,
             }
