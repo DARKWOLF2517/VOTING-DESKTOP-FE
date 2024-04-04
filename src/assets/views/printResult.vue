@@ -69,6 +69,7 @@ export default {
     },
     mounted() {
         console.log('asdf')
+        document.title = "Print Vote Slip";
         const baseUrl = window.location.origin;
         console.log(baseUrl);
         this.fetchData();

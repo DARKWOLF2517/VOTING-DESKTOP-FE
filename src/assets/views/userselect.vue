@@ -49,6 +49,7 @@ export default {
     };
   },
   mounted() {
+    document.title = "User Selection";
     // Add animation class after component is mounted
     document.querySelector('.card-animate').classList.add('fade-in-left');
     document.querySelector('.image-animate').classList.add('fade-in');

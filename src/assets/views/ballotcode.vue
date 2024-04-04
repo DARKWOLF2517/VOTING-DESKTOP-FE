@@ -144,6 +144,7 @@ export default {
         // Add animation class after component is mounted
         document.querySelector('.card-animate').classList.add('fade-in-left');
         document.querySelector('.image-animate').classList.add('fade-in');
+        document.title = "CLIMBS ELECTIONS";
         // if (!sessionStorage.getItem("delegateid")) {
         //     window.location.href = '/';
         this.startQrReading();

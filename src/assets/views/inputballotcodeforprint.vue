@@ -1,6 +1,13 @@
 <template>
     <div class="h-screen w-screen">
-
+ <!-- Navigation Bar -->
+ <nav class="bg-primary p-2 w-screen">
+            <div class="container">
+                <div class="flex justify-start ">
+                    <img src="../images/climbs-logo.jpg" alt="CLIMBS Logo" class="w-10 h-10 ">
+                </div>
+            </div>
+        </nav>
         <div class="flex justify-center align mt-20">
             <div class="qr-scanner card rounded bg-white shadow w-auto card-animate">
                 <h1 class="text-3xl flex justify-center mb-3 font-bold  text-primary">Scan QR Code</h1>
@@ -38,6 +45,7 @@ export default {
         }
     },
     mounted() {
+        document.title = "Scan & Print";
         console.log('sdf');
         this.startQrReading();
 

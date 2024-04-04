@@ -67,6 +67,7 @@ export default {
         }
     },
     mounted() {
+        document.title = "Print Vote Slip";
         this.fetchData();
         this.getDate();
     },
