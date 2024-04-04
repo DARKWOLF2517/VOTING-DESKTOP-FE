@@ -38,8 +38,8 @@
 
                         </tbody>
                     </table>
-                    <p class="font-bold text-xs">
-                        ***************Nothing Follows***************
+                    <p class="font-bold text-xs ">
+                        **************************************************Nothing Follows **************************************************
                     </p>
                     <div class="flex justify-start overflow-x-hidden mt-6">
                         <p>Signature:______________________________</p>
