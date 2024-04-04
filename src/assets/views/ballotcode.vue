@@ -79,9 +79,9 @@
             </div>
             <div class="flex justify-start">
                 <button type="button" @click="this.$router.push('/');"
-                        class="text-white ml-3 bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
-                        Back
-                    </button>
+                    class="text-white ml-3 bg-primary hover:bg-accent w-80 md:w-auto md:mr-0 flex justify-center items-center">
+                    Back
+                </button>
             </div>
             <div class="flex justify-center items-center content-section">
                 <div class="container sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
@@ -127,7 +127,7 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 import axios from "axios";
@@ -169,7 +169,7 @@ export default {
         },
 
         error(err) {
-            // console.error(err);
+            console.error(err);
             // Prints any errors to the console
         },
         async checkBallotCode() {
@@ -207,7 +207,7 @@ export default {
                 console.log(error);
             }
         },
-        showError(message: any) {
+        showError(message) {
             toast.error(message), {
                 autoClose: 100,
             }
