@@ -32,7 +32,9 @@
 .modal-fade-leave-to {
   opacity: 0;
 }
-
+#welcome-page{
+  display: block;
+}
 #profileImage {
   width: 100px;
   height: 100px;
@@ -319,6 +321,9 @@
   #back-btn{
     display: none;
   }
+  #welcome-page{
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -329,7 +334,9 @@
   #back-btn{
     display: none;
   }
-
+  #welcome-page{
+    display: none;
+  }
   .h-screen {
     height: 100vh;
   }
