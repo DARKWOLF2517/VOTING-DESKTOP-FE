@@ -33,6 +33,8 @@
 </template>
 
 <script lang="ts">
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 import { Html5QrcodeScanner } from "html5-qrcode";
 import axios from "axios";
 export default {
@@ -90,8 +92,13 @@ export default {
                 }, 8000);
             }
             else {
-                alert('Invalid Qr Code')
+                this.showError('Ballot has not been used for voting yet.');
                 this.scanner.resume();
+            }
+        },
+        showError(message: any) {
+            toast.error(message), {
+                autoClose: 100,
             }
         },
     }
