@@ -78,6 +78,9 @@
 #print-btn{
     display: block;
 }
+#back-btn{
+  display: block;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -122,7 +125,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 768px){
   .min-h-screen {
     min-height: 100vh;
     overflow-x: hidden;
@@ -313,12 +316,18 @@
     width: 100px;
     height: 100px;
   }
+  #back-btn{
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 576px) {
   .min-h-screen {
     min-height: 100vh;
     overflow-x: hidden;
+  }
+  #back-btn{
+    display: none;
   }
 
   .h-screen {

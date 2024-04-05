@@ -1,6 +1,6 @@
 <template>
   <title>CLIMBS</title>
-  <div class="h-screen w-screen">
+  <div class="h-screen min-h-screen w-screen">
     <!-- Navigation Bar -->
     <nav class="bg-primary p-2 w-screen">
       <div class="container">
