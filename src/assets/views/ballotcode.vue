@@ -159,7 +159,7 @@ export default {
                     height: 250,
                 },  // Sets dimensions of scanning box (set relative to reader element width)
                 fps: 20, // Frames per second to attempt a scan
-            }, true);
+            }, false);
             this.scanner.render(this.success, this.error);
             // Starts scanner
 
@@ -170,8 +170,8 @@ export default {
             this.checkBallotCode();
         },
 
-        error(err: any) {
-            console.error(err);
+        error() {
+            // console.error(err);
             // Prints any errors to the console
         },
         async checkBallotCode() {
